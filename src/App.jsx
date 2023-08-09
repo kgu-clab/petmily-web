@@ -1,5 +1,11 @@
+import Sidebar from './components/Sidebar';
+
 function App() {
-  return <section className="font-bold">펫밀리</section>;
+  return (
+    <section className="flex">
+      <Sidebar />
+    </section>
+  );
 }
 
 export default App;
