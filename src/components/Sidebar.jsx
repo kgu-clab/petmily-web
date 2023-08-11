@@ -8,15 +8,16 @@ import {
   AccordionBody,
 } from '@material-tailwind/react';
 import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
   Cog6ToothIcon,
   BookOpenIcon,
   HomeIcon,
-} from '@heroicons/react/24/solid';
+  BuildingStorefrontIcon,
+  ExclamationTriangleIcon,
+} from '@heroicons/react/24/outline';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
+import { Heart, PeopleTag } from 'iconoir-react';
+import LogoIcon from '/logo.svg';
 
 const Sidebar = () => {
   const [open, setOpen] = useState(0);
@@ -26,131 +27,160 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white px-4">
-      <div className="mb-2 flex items-center gap-4 p-4">
-        <Typography variant="h4">팻밀리</Typography>
+    <div className="fixed flex min-h-screen w-[18rem] flex-col justify-between bg-white p-4">
+      <div>
+        <div className="mb-2 flex items-center gap-2 px-4">
+          <img src={LogoIcon} alt="logo" className="h-5 w-5" />
+          <Typography variant="h4" className="font-extrabold">
+            팻밀리
+          </Typography>
+        </div>
+
+        <List className="text-sm">
+          <ListItem onClick={() => setOpen(0)}>
+            <ListItemPrefix>
+              <HomeIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            홈
+          </ListItem>
+
+          <Accordion
+            open={open === 1}
+            icon={
+              <ChevronDownIcon
+                strokeWidth={2.5}
+                className={`mx-auto h-4 w-4 transition-transform ${
+                  open === 1 ? 'rotate-180' : ''
+                }`}
+              />
+            }
+          >
+            <ListItem className="p-0" selected={open === 1}>
+              <AccordionHeader
+                onClick={() => handleOpen(1)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <Heart className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto text-sm font-normal"
+                >
+                  분양
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+
+            <AccordionBody className="py-1">
+              <List className="p-0 text-sm">
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  전문업체
+                </ListItem>
+
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  보호소
+                </ListItem>
+
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  개인무료
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+
+          <Accordion
+            open={open === 2}
+            icon={
+              <ChevronDownIcon
+                strokeWidth={2.5}
+                className={`mx-auto h-4 w-4 transition-transform ${
+                  open === 2 ? 'rotate-180' : ''
+                }`}
+              />
+            }
+          >
+            <ListItem className="p-0" selected={open === 2}>
+              <AccordionHeader
+                onClick={() => handleOpen(2)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <BuildingStorefrontIcon className="h-5 w-5" />
+                </ListItemPrefix>
+
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto text-sm font-normal"
+                >
+                  스토어
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+
+            <AccordionBody className="py-1">
+              <List className="p-0 text-sm">
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  새상품
+                </ListItem>
+
+                <ListItem>
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  중고물품
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+
+          <hr className="my-2 border-blue-gray-50" />
+
+          <ListItem>
+            <ListItemPrefix>
+              <BookOpenIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            가이드
+          </ListItem>
+
+          <ListItem>
+            <ListItemPrefix>
+              <PeopleTag className="h-5 w-5" />
+            </ListItemPrefix>
+            고객센터
+          </ListItem>
+
+          <ListItem>
+            <ListItemPrefix>
+              <Cog6ToothIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            설정
+          </ListItem>
+        </List>
       </div>
 
-      <List>
-        <ListItem>
-          <ListItemPrefix>
-            <HomeIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          홈
-        </ListItem>
-
-        <Accordion
-          open={open === 1}
-          icon={
-            <ChevronDownIcon
-              strokeWidth={2.5}
-              className={`mx-auto h-4 w-4 transition-transform ${
-                open === 1 ? 'rotate-180' : ''
-              }`}
-            />
-          }
-        >
-          <ListItem className="p-0" selected={open === 1}>
-            <AccordionHeader
-              onClick={() => handleOpen(1)}
-              className="border-b-0 p-3"
-            >
-              <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              <Typography color="blue-gray" className="mr-auto font-normal">
-                분양
-              </Typography>
-            </AccordionHeader>
-          </ListItem>
-
-          <AccordionBody className="py-1">
-            <List className="p-0">
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                전문업체분양
-              </ListItem>
-
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                개인무료분양
-              </ListItem>
-            </List>
-          </AccordionBody>
-        </Accordion>
-
-        <Accordion
-          open={open === 2}
-          icon={
-            <ChevronDownIcon
-              strokeWidth={2.5}
-              className={`mx-auto h-4 w-4 transition-transform ${
-                open === 2 ? 'rotate-180' : ''
-              }`}
-            />
-          }
-        >
-          <ListItem className="p-0" selected={open === 2}>
-            <AccordionHeader
-              onClick={() => handleOpen(2)}
-              className="border-b-0 p-3"
-            >
-              <ListItemPrefix>
-                <ShoppingBagIcon className="h-5 w-5" />
-              </ListItemPrefix>
-
-              <Typography color="blue-gray" className="mr-auto font-normal">
-                거래
-              </Typography>
-            </AccordionHeader>
-          </ListItem>
-
-          <AccordionBody className="py-1">
-            <List className="p-0">
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                새제품
-              </ListItem>
-
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                중고거래
-              </ListItem>
-            </List>
-          </AccordionBody>
-        </Accordion>
-
-        <hr className="my-2 border-blue-gray-50" />
-
-        <ListItem>
-          <ListItemPrefix>
-            <BookOpenIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          가이드
-        </ListItem>
-
-        <ListItem>
-          <ListItemPrefix>
-            <UserCircleIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          고객센터
-        </ListItem>
-
-        <ListItem>
-          <ListItemPrefix>
-            <Cog6ToothIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          설정
-        </ListItem>
-      </List>
+      <div className="rounded-lg bg-pm-main p-4 text-white">
+        <ExclamationTriangleIcon className="mb-2 h-8 w-8" />
+        <Typography variant="h6" className="mb-1">
+          분양등록안내
+        </Typography>
+        <Typography variant="small" className="font-normal opacity-80">
+          팻밀리는 누구나 분양등록을 할 수 있습니다. 하지만 가정분양은
+          동물보호정책에 따라 분양비용을 받으실 수 없습니다.
+        </Typography>
+      </div>
     </div>
   );
 };
