@@ -1,7 +1,5 @@
 import ContentCard from '@components/ui/ContentCard';
-import Footer from '@components/Footer';
 import Titlebar from '@components/ui/Titlebar';
-
 import GuideTagSection from '@components/home/GuideTagSection';
 import PopularGuideSection from '@components/home/PopularGuideSection';
 import ThemeCard from '@components/ui/ThemeCard';
@@ -146,8 +144,6 @@ const HomePage = () => {
           />
         </GuideTagSection>
       </PopularGuideSection>
-
-      <Footer />
     </div>
   );
 };
