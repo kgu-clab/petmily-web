@@ -9,9 +9,9 @@ const Titlebar = ({ title, sub, to = '/' }) => {
 
         <Link
           to={to}
-          className="flex items-center justify-center rounded-xl px-3 py-1 text-gray-500 hover:bg-gray-300 hover:text-gray-900"
+          className="flex items-center justify-center rounded-lg px-3 py-1.5 text-pm-main hover:bg-gray-300"
         >
-          <p className="whitespace-nowrap text-sm font-medium">더 보기 &gt;</p>
+          <p className="whitespace-nowrap text-sm font-semibold">더보기</p>
         </Link>
       </div>
 
