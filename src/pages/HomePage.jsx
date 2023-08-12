@@ -1,7 +1,7 @@
 import AnimalCard from '@components/ui/AnimalCard';
 import ContentCard from '@components/ui/ContentCard';
 import Footer from '@components/Footer';
-import Titlebar from '@components/Titlebar';
+import Titlebar from '@components/ui/Titlebar';
 import AnimalSection from '@components/home/AnimalSection';
 import GuideTagSection from '@components/home/GuideTagSection';
 import PopularGuideSection from '@components/home/PopularGuideSection';
@@ -18,7 +18,7 @@ const HomePage = () => {
         <AnimalCard
           title="시고르자브종"
           provider="한관희전문분양"
-          price="100,000"
+          price={100000}
         />
       </AnimalSection>
 
@@ -31,7 +31,7 @@ const HomePage = () => {
         <AnimalCard
           title="시고르자브종"
           provider="김정은보호소"
-          price="100,000"
+          price={100000}
         />
       </AnimalSection>
 
@@ -44,7 +44,7 @@ const HomePage = () => {
         <AnimalCard
           title="시고르자브종"
           provider="팻밀리관리자"
-          price="100,000"
+          price={100000}
         />
       </AnimalSection>
 

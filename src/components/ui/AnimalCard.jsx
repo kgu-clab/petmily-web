@@ -1,3 +1,4 @@
+import { formatCurrency } from '@common/utils';
 import PropTypes from 'prop-types';
 
 const AnimalCard = ({ title, provider, price }) => {
@@ -14,7 +15,7 @@ const AnimalCard = ({ title, provider, price }) => {
         <p className="text-sm font-normal text-gray-500">{provider}</p>
 
         <p className="mt-1 text-sm font-semibold">
-          <span className="text-pm-main">{price}</span> 원
+          <span className="text-pm-main">{formatCurrency(price)}</span> 원
         </p>
       </div>
     </div>
@@ -24,7 +25,7 @@ const AnimalCard = ({ title, provider, price }) => {
 AnimalCard.propTypes = {
   title: PropTypes.string.isRequired,
   provider: PropTypes.string.isRequired,
-  price: PropTypes.number.number,
+  price: PropTypes.number.isRequired,
 };
 
 export default AnimalCard;
