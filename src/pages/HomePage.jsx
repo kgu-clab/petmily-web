@@ -6,7 +6,7 @@ import AnimalSection from '@components/home/AnimalSection';
 import GuideTagSection from '@components/home/GuideTagSection';
 import PopularGuideSection from '@components/home/PopularGuideSection';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className="flex flex-col gap-10">
       {/* 전문업체분양 */}
@@ -135,6 +135,6 @@ const Home = () => {
   );
 };
 
-Home.propTypes = {};
+HomePage.propTypes = {};
 
-export default Home;
+export default HomePage;

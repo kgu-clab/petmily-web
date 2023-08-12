@@ -1,6 +1,6 @@
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Sidebar from '@components/Sidebar';
-import Home from '@pages/Home';
+import HomePage from '@pages/HomePage';
 
 const Section = () => {
   return (
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <Home />,
+        element: <HomePage />,
       },
     ],
   },
