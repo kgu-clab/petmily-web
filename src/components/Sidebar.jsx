@@ -18,12 +18,16 @@ import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { Heart, PeopleTag } from 'iconoir-react';
 import LogoIcon from '/logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(0);
 
-  const handleOpen = (value) => {
+  const handleOpen = (value, to) => {
     setOpen(open === value ? 0 : value);
+    navigate(to);
   };
 
   return (
@@ -37,7 +41,7 @@ const Sidebar = () => {
         </div>
 
         <List className="text-sm">
-          <ListItem onClick={() => setOpen(0)}>
+          <ListItem onClick={() => handleOpen(0, '/')}>
             <ListItemPrefix>
               <HomeIcon className="h-5 w-5" />
             </ListItemPrefix>
