@@ -1,6 +1,7 @@
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Sidebar from '@components/Sidebar';
 import HomePage from '@pages/HomePage';
+import ProfessionalSalesPage from '@pages/ProfessionalSalesPage';
 
 const Section = () => {
   return (
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <HomePage />,
+      },
+      {
+        path: '/professional',
+        element: <ProfessionalSalesPage />,
       },
     ],
   },
