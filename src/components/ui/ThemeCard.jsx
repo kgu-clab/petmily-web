@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import { Card, CardBody, CardHeader } from '@material-tailwind/react';
+import { useNavigate } from 'react-router-dom';
 
-const ThemeCard = ({ title, sub, image }) => {
+const ThemeCard = ({ title, sub, image, to }) => {
+  const navigate = useNavigate();
+
   return (
     <Card
       shadow={false}
       className="relative grid h-52 cursor-pointer items-end justify-start overflow-hidden text-center transition ease-in-out hover:shadow-xl"
+      onClick={() => navigate(to)}
     >
       <CardHeader
         floated={false}
@@ -33,6 +37,7 @@ ThemeCard.propTypes = {
   title: PropTypes.string.isRequired,
   sub: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
 };
 
 export default ThemeCard;

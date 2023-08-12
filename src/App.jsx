@@ -3,6 +3,8 @@ import Sidebar from '@components/Sidebar';
 import HomePage from '@pages/HomePage';
 import ProfessionalSalesPage from '@pages/ProfessionalSalesPage';
 import Footer from '@components/Footer';
+import AnimalPage from '@pages/AnimalPage';
+import AnimalListPage from '@pages/AnimalListPage';
 
 const Section = () => {
   return (
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: '/professional',
         element: <ProfessionalSalesPage />,
+      },
+      {
+        path: '/animal/:id',
+        element: <AnimalPage />,
+      },
+      {
+        path: '/list',
+        element: <AnimalListPage />,
       },
     ],
   },

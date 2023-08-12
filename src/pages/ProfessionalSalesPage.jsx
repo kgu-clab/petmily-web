@@ -70,6 +70,7 @@ const ProfessionalSalesPage = () => {
             provider="한관희전문분양"
             icon={dogIcon}
             price={100000}
+            to="/animal/1"
           />
         </div>
       </div>
