@@ -1,9 +1,7 @@
 import { formatCurrency } from '@common/utils';
 import PropTypes from 'prop-types';
 
-import DogIcon from '@assets/dog.svg';
-
-const AnimalCard = ({ title, provider, price }) => {
+const AnimalCard = ({ title, provider, price, icon }) => {
   return (
     <div className="flex cursor-pointer flex-col rounded-lg transition ease-in-out hover:shadow-lg">
       <img
@@ -16,7 +14,7 @@ const AnimalCard = ({ title, provider, price }) => {
         <div className="flex items-center justify-between">
           <h1 className="font-semibold">{title}</h1>
 
-          <img src={DogIcon} alt="종" className="h-4 w-4" />
+          {icon && <img src={icon} alt="종" className="h-6 w-6" />}
         </div>
         <p className="text-sm font-normal text-gray-500">{provider}</p>
 
@@ -32,6 +30,7 @@ AnimalCard.propTypes = {
   title: PropTypes.string.isRequired,
   provider: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  icon: PropTypes.string.isRequired,
 };
 
 export default AnimalCard;
