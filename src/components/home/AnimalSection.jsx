@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Titlebar from '@components/Titlebar';
+import Titlebar from '@components/ui/Titlebar';
 
 const AnimalSection = ({ title, sub, to, children }) => {
   return (
