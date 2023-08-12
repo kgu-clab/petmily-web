@@ -13,11 +13,15 @@ const ContentCard = ({ title, date, image }) => {
         color="transparent"
         className="absolute inset-0 m-0 h-full w-full rounded-none bg-cover bg-center"
       >
-        <img src={image} alt="image" className="object-cover" />
-        <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/30" />
+        <img
+          src={image}
+          alt="image"
+          className="h-full w-full object-cover transition ease-in-out hover:scale-125"
+        />
+        <div className="to-bg-black-10 pointer-events-none absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/30" />
       </CardHeader>
 
-      <CardBody className="relative p-4">
+      <CardBody className="pointer-events-none relative whitespace-nowrap p-4">
         <div className="text-lg font-bold text-white">{title}</div>
         <span className="text-gray-400">{date}</span>
       </CardBody>
