@@ -1,5 +1,5 @@
-import AnimalCard from '@components/AnimalCard';
-import ContentCard from '@components/ContentCard';
+import AnimalCard from '@components/ui/AnimalCard';
+import ContentCard from '@components/ui/ContentCard';
 import Footer from '@components/Footer';
 import Titlebar from '@components/Titlebar';
 import AnimalSection from '@components/home/AnimalSection';
