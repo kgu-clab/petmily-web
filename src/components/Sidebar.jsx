@@ -27,7 +27,10 @@ const Sidebar = () => {
 
   const handleOpen = (value, to) => {
     setOpen(open === value ? 0 : value);
-    navigate(to);
+
+    if (to) {
+      navigate(to);
+    }
   };
 
   return (
@@ -78,7 +81,7 @@ const Sidebar = () => {
 
             <AccordionBody className="py-1">
               <List className="p-0 text-sm">
-                <ListItem>
+                <ListItem onClick={() => handleOpen(1, '/professional')}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>

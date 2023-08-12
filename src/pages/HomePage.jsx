@@ -1,52 +1,69 @@
-import AnimalCard from '@components/AnimalCard';
-import ContentCard from '@components/ContentCard';
+import ContentCard from '@components/ui/ContentCard';
 import Footer from '@components/Footer';
-import Titlebar from '@components/Titlebar';
-import AnimalSection from '@components/home/AnimalSection';
+import Titlebar from '@components/ui/Titlebar';
+
 import GuideTagSection from '@components/home/GuideTagSection';
 import PopularGuideSection from '@components/home/PopularGuideSection';
+import ThemeCard from '@components/ui/ThemeCard';
 
-const Home = () => {
+const HomePage = () => {
   return (
-    <div className="flex flex-col gap-10">
-      {/* 전문업체분양 */}
-      <AnimalSection
-        title="전문업체분양"
-        sub="팻밀리가 검증한 전문업체 분양입니다."
-        to="/professional"
-      >
-        <AnimalCard
-          title="시고르자브종"
-          provider="한관희전문분양"
-          price="100,000"
+    <div className="flex flex-col gap-16">
+      {/* 나에게 어울리는 반려동물 찾기 */}
+      <div>
+        <Titlebar
+          title="나에게 어울리는 반려동물 찾기"
+          sub="카테고리를 통해서 키우고 싶은 반려동물을 찾아봐요."
         />
-      </AnimalSection>
 
-      {/* 보호소분양 */}
-      <AnimalSection
-        title="보호소분양"
-        sub="보호소에서 보호하고 있는 반려동물입니다."
-        to="/shelter"
-      >
-        <AnimalCard
-          title="시고르자브종"
-          provider="김정은보호소"
-          price="100,000"
-        />
-      </AnimalSection>
+        <div className="mt-4 grid grid-cols-3 gap-4">
+          <ThemeCard
+            title="모든 정보"
+            sub="모든 종의 최신 분양 정보를 볼 수 있어요."
+            image="https://images.unsplash.com/photo-1588421357574-87938a86fa28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+          />
 
-      {/* 개인무료분양 */}
-      <AnimalSection
-        title="개인무료분양"
-        sub="개인 가정의 무료 분양입니다."
-        to="/individual"
-      >
-        <AnimalCard
-          title="시고르자브종"
-          provider="팻밀리관리자"
-          price="100,000"
-        />
-      </AnimalSection>
+          <ThemeCard
+            title="강아지"
+            sub="모든 개과의 분양 정보를 볼 수 있어요."
+            image="https://images.unsplash.com/photo-1504595403659-9088ce801e29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+          />
+
+          <ThemeCard
+            title="고양이"
+            sub="모든 고양이과의 분양 정보를 볼 수 있어요."
+            image="https://images.unsplash.com/photo-1583795128727-6ec3642408f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1657&q=80"
+          />
+
+          <ThemeCard
+            title="새"
+            sub="앵무새 등 조류의 분양 정보를 볼 수 있어요."
+            image="https://images.unsplash.com/photo-1549608276-5786777e6587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+          />
+
+          <div className="col-span-2">
+            <ThemeCard
+              title="물고기"
+              sub="구피, 금붕어 등 다양한 애완 물고기의 분양 정보를 볼 수 있어요."
+              image="https://images.unsplash.com/photo-1578764843877-f0f292ea5b0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+            />
+          </div>
+
+          <div className="col-span-2">
+            <ThemeCard
+              title="소형 동물"
+              sub="햄스터, 토끼, 고슴도치 등 기르기 쉬운 작은 애완동물의 분양 정보를 볼 수 있어요."
+              image="https://images.unsplash.com/photo-1519196215731-1d6799ca0ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+            />
+          </div>
+
+          <ThemeCard
+            title="파충류"
+            sub="거북이, 도마뱀 등 파충류의 분양 정보를 볼 수 있어요. "
+            image="https://images.unsplash.com/photo-1617540021016-72023b487e99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80"
+          />
+        </div>
+      </div>
 
       {/* 새로나온 가이드 */}
       <div>
@@ -135,6 +152,6 @@ const Home = () => {
   );
 };
 
-Home.propTypes = {};
+HomePage.propTypes = {};
 
-export default Home;
+export default HomePage;
