@@ -40,6 +40,8 @@ const router = createBrowserRouter([
       {
         path: '/list',
         element: <AnimalListPage />,
+      },
+      {
         path: '/login',
         element: <LoginPage />,
       },
