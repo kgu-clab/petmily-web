@@ -14,6 +14,7 @@ const AnimalListPage = () => {
           title="시고르자브종"
           provider="한관희전문분양"
           price={100000}
+          to="/animal/1"
         />
       </AnimalSection>
 
