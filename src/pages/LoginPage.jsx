@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const LoginPage = () => {
@@ -42,7 +42,6 @@ const LoginPage = () => {
             onChange={onChangeId}
             placeholder="아이디"
           />
-
           <input
             className="rounded-lg border p-3 font-normal"
             type="password"
@@ -53,13 +52,11 @@ const LoginPage = () => {
             placeholder="비밀번호"
           />
         </div>
-
         {errorMessage && (
           <p className="mt-5 text-center text-sm text-red-500">
             {errorMessage}
           </p>
         )}
-
         <div className="flex flex-col">
           <button
             className="my-6 h-10 rounded-lg bg-pm-main text-base text-white hover:bg-blue-700"
