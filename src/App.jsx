@@ -5,6 +5,7 @@ import ProfessionalSalesPage from '@pages/ProfessionalSalesPage';
 import Footer from '@components/Footer';
 import AnimalPage from '@pages/AnimalPage';
 import AnimalListPage from '@pages/AnimalListPage';
+import LoginPage from '@pages/LoginPage';
 
 const Section = () => {
   return (
@@ -39,6 +40,8 @@ const router = createBrowserRouter([
       {
         path: '/list',
         element: <AnimalListPage />,
+        path: '/login',
+        element: <LoginPage />,
       },
     ],
   },
