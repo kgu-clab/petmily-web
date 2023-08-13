@@ -2,6 +2,7 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Sidebar from '@components/Sidebar';
 import HomePage from '@pages/HomePage';
 import ProfessionalSalesPage from '@pages/ProfessionalSalesPage';
+import LoginPage from '@pages/LoginPage';
 
 const Section = () => {
   return (
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/professional',
         element: <ProfessionalSalesPage />,
+      },
+      {
+        path: '/login',
+        element: <LoginPage />,
       },
     ],
   },
