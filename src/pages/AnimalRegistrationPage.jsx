@@ -1,5 +1,6 @@
 import {
   ChartPieIcon,
+  ChatBubbleOvalLeftEllipsisIcon,
   HandThumbUpIcon,
   QueueListIcon,
   ScaleIcon,
@@ -218,7 +219,7 @@ const AnimalRegistrationPage = () => {
 
         <Section
           icon={<HandThumbUpIcon className="h-5 w-5" />}
-          title="이런분께 추천드려요!"
+          title="이런 분께 추천드려요!"
           className="text-pm-main"
         >
           <ul className="mt-4 list-inside list-disc">
@@ -232,8 +233,8 @@ const AnimalRegistrationPage = () => {
         </Section>
 
         <Section
-          icon={<HandThumbUpIcon className="h-5 w-5" />}
-          title="한번 고민해보셔야해요!"
+          icon={<ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5" />}
+          title="한번 고민해 보셔야 해요!"
           className="text-pm-red"
         >
           <ul className="mt-4 list-inside list-disc">

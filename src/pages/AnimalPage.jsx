@@ -181,7 +181,7 @@ const AnimalPage = () => {
       <div className="h-full rounded-lg bg-white p-4">
         <h1 className="font-xl flex gap-2 font-bold text-pm-main">
           <HandThumbUpIcon className="h-5 w-5" />
-          이런분께 추천드려요!
+          이런 분께 추천드려요!
         </h1>
 
         <ul className="mt-4 list-inside list-disc">
@@ -192,7 +192,7 @@ const AnimalPage = () => {
       <div className="h-full rounded-lg bg-white p-4">
         <h1 className="font-xl flex gap-2 font-bold text-pm-red">
           <ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5" />
-          한번 고민해보셔야해요!
+          한번 고민해 보셔야 해요!
         </h1>
 
         <ul className="mt-4 list-inside list-disc">
