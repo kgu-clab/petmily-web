@@ -9,6 +9,7 @@ export default withMT({
     extend: {
       colors: {
         'pm-main': '#458bf5',
+        'pm-red': '#ee5789',
       },
     },
   },

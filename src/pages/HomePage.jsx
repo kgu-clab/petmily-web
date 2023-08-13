@@ -1,7 +1,5 @@
 import ContentCard from '@components/ui/ContentCard';
-import Footer from '@components/Footer';
 import Titlebar from '@components/ui/Titlebar';
-
 import GuideTagSection from '@components/home/GuideTagSection';
 import PopularGuideSection from '@components/home/PopularGuideSection';
 import ThemeCard from '@components/ui/ThemeCard';
@@ -20,12 +18,14 @@ const HomePage = () => {
           <ThemeCard
             title="모든 정보"
             sub="모든 종의 최신 분양 정보를 볼 수 있어요."
+            to="/list"
             image="https://images.unsplash.com/photo-1588421357574-87938a86fa28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
           />
 
           <ThemeCard
             title="강아지"
             sub="모든 개과의 분양 정보를 볼 수 있어요."
+            to="/list"
             image="https://images.unsplash.com/photo-1504595403659-9088ce801e29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
           />
 
@@ -146,8 +146,6 @@ const HomePage = () => {
           />
         </GuideTagSection>
       </PopularGuideSection>
-
-      <Footer />
     </div>
   );
 };

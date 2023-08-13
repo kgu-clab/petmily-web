@@ -2,6 +2,9 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Sidebar from '@components/Sidebar';
 import HomePage from '@pages/HomePage';
 import ProfessionalSalesPage from '@pages/ProfessionalSalesPage';
+import Footer from '@components/Footer';
+import AnimalPage from '@pages/AnimalPage';
+import AnimalListPage from '@pages/AnimalListPage';
 import LoginPage from '@pages/LoginPage';
 
 const Section = () => {
@@ -11,6 +14,7 @@ const Section = () => {
 
       <div className="ml-[18rem] grow p-5">
         <Outlet />
+        <Footer />
       </div>
     </section>
   );
@@ -18,7 +22,7 @@ const Section = () => {
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '',
     element: <Section />,
     children: [
       {
@@ -30,6 +34,12 @@ const router = createBrowserRouter([
         element: <ProfessionalSalesPage />,
       },
       {
+        path: '/animal/:id',
+        element: <AnimalPage />,
+      },
+      {
+        path: '/list',
+        element: <AnimalListPage />,
         path: '/login',
         element: <LoginPage />,
       },

@@ -1,11 +1,15 @@
 import { formatCurrency } from '@common/utils';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-import DogIcon from '@assets/dog.svg';
+const AnimalCard = ({ title, provider, price, icon, to }) => {
+  const navigate = useNavigate();
 
-const AnimalCard = ({ title, provider, price }) => {
   return (
-    <div className="flex cursor-pointer flex-col rounded-lg transition ease-in-out hover:shadow-lg">
+    <div
+      className="flex cursor-pointer flex-col rounded-lg transition ease-in-out hover:shadow-lg"
+      onClick={() => navigate(to)}
+    >
       <img
         src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
         alt=""
@@ -16,7 +20,7 @@ const AnimalCard = ({ title, provider, price }) => {
         <div className="flex items-center justify-between">
           <h1 className="font-semibold">{title}</h1>
 
-          <img src={DogIcon} alt="종" className="h-4 w-4" />
+          {icon && <img src={icon} alt="종" className="h-6 w-6" />}
         </div>
         <p className="text-sm font-normal text-gray-500">{provider}</p>
 
@@ -32,6 +36,8 @@ AnimalCard.propTypes = {
   title: PropTypes.string.isRequired,
   provider: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  icon: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
 };
 
 export default AnimalCard;
