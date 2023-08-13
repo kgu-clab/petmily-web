@@ -1,4 +1,4 @@
-import AnimalSection from '@components/home/AnimalSection';
+import AnimalSection from '@components/animal/AnimalListSection';
 import AnimalCard from '@components/ui/AnimalCard';
 
 const AnimalListPage = () => {

@@ -17,26 +17,7 @@ import genderIcon from '@assets/gender.svg';
 import PropTypes from 'prop-types';
 import { Editor } from '@toast-ui/react-editor';
 import { Button } from '@material-tailwind/react';
-
-const Section = ({ icon, title, className = '', children }) => {
-  return (
-    <div className="h-full rounded-lg bg-white p-4">
-      <h1 className={`${className} font-xl flex gap-2 font-bold`}>
-        {icon}
-        {title}
-      </h1>
-
-      {children}
-    </div>
-  );
-};
-
-Section.propTypes = {
-  icon: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};
+import AnimalSection from '@components/animal/AnimalSection';
 
 const ProfileTag = ({ icon, label }) => {
   return (
@@ -152,7 +133,10 @@ const AnimalRegistrationPage = () => {
           </div>
         </div>
 
-        <Section icon={<QueueListIcon className="h-5 w-5" />} title="프로필">
+        <AnimalSection
+          icon={<QueueListIcon className="h-5 w-5" />}
+          title="프로필"
+        >
           <div className="mt-4 grid grid-cols-5 place-items-center gap-4">
             <ProfileTag
               icon={<SwatchIcon className="h-5 w-5" />}
@@ -190,9 +174,9 @@ const AnimalRegistrationPage = () => {
               data="2차"
             />
           </div>
-        </Section>
+        </AnimalSection>
 
-        <Section icon={<ChartPieIcon className="h-5 w-5" />} title="성격">
+        <AnimalSection icon={<ChartPieIcon className="h-5 w-5" />} title="성격">
           <ul className="mt-4 leading-loose">
             <li>
               리더십:
@@ -215,9 +199,9 @@ const AnimalRegistrationPage = () => {
               <RegistrationInput className="ml-1" placeholder="0.0 ~ 10.0" />
             </li>
           </ul>
-        </Section>
+        </AnimalSection>
 
-        <Section
+        <AnimalSection
           icon={<HandThumbUpIcon className="h-5 w-5" />}
           title="이런 분께 추천드려요!"
           className="text-pm-main"
@@ -230,9 +214,9 @@ const AnimalRegistrationPage = () => {
               />
             </li>
           </ul>
-        </Section>
+        </AnimalSection>
 
-        <Section
+        <AnimalSection
           icon={<ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5" />}
           title="한번 고민해 보셔야 해요!"
           className="text-pm-red"
@@ -245,7 +229,7 @@ const AnimalRegistrationPage = () => {
               />
             </li>
           </ul>
-        </Section>
+        </AnimalSection>
 
         <div className="col-span-2 rounded-lg">
           <Editor

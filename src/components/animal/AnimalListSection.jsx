@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Titlebar from '@components/ui/Titlebar';
 
-const AnimalSection = ({ title, sub, to, children }) => {
+const AnimalListSection = ({ title, sub, to, children }) => {
   return (
     <div>
       <Titlebar title={title} sub={sub} to={to} />
@@ -11,11 +11,11 @@ const AnimalSection = ({ title, sub, to, children }) => {
   );
 };
 
-AnimalSection.propTypes = {
+AnimalListSection.propTypes = {
   title: PropTypes.string.isRequired,
   sub: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
-export default AnimalSection;
+export default AnimalListSection;
