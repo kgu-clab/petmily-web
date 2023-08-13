@@ -24,22 +24,20 @@ import genderIcon from '@assets/gender.svg';
 import kakaoIcon from '@assets/kakao.svg';
 import PropTypes from 'prop-types';
 
-const ProfileButton = ({ icon, label, data }) => {
+const ProfileTag = ({ icon, label, data }) => {
   return (
-    <button className="w-20 rounded-lg bg-gray-100">
-      <div className="flex w-full flex-col items-center justify-center py-2">
-        {icon}
+    <div className="flex w-20 flex-col items-center justify-center rounded-lg bg-gray-100 py-2">
+      {icon}
 
-        <ul className="mt-2">
-          <li className="text-sm font-semibold">{data}</li>
-          <li className="text-xs text-gray-600">{label}</li>
-        </ul>
-      </div>
-    </button>
+      <ul className="mt-2 text-center">
+        <li className="text-sm font-semibold">{data}</li>
+        <li className="text-xs text-gray-600">{label}</li>
+      </ul>
+    </div>
   );
 };
 
-ProfileButton.propTypes = {
+ProfileTag.propTypes = {
   icon: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   data: PropTypes.string.isRequired,
@@ -131,37 +129,37 @@ const AnimalPage = () => {
         </h1>
 
         <div className="mt-4 grid grid-cols-5 place-items-center gap-4">
-          <ProfileButton
+          <ProfileTag
             icon={<SwatchIcon className="h-5 w-5" />}
             label="품종"
             data="사모예드"
           />
-          <ProfileButton
+          <ProfileTag
             icon={<TagIcon className="h-5 w-5" />}
             label="이름"
             data="바둑이"
           />
-          <ProfileButton
+          <ProfileTag
             icon={<ColorFilter className="h-5 w-5" />}
             label="색상"
             data="누런색"
           />
-          <ProfileButton
+          <ProfileTag
             icon={<img src={genderIcon} alt="icon" className="h-5 w-5" />}
             label="성별"
             data="남"
           />
-          <ProfileButton
+          <ProfileTag
             icon={<BirthdayCake className="h-5 w-5" />}
             label="나이"
             data="3"
           />
-          <ProfileButton
+          <ProfileTag
             icon={<ScaleIcon className="h-5 w-5" />}
             label="몸무게"
             data="20KG"
           />
-          <ProfileButton
+          <ProfileTag
             icon={<ColorPicker className="h-5 w-5" />}
             label="필수 접종"
             data="2차"
@@ -183,7 +181,7 @@ const AnimalPage = () => {
       <div className="h-full rounded-lg bg-white p-4">
         <h1 className="font-xl flex gap-2 font-bold text-pm-main">
           <HandThumbUpIcon className="h-5 w-5" />
-          이런분께 추천드려요!
+          이런 분께 추천드려요!
         </h1>
 
         <ul className="mt-4 list-inside list-disc">
@@ -194,7 +192,7 @@ const AnimalPage = () => {
       <div className="h-full rounded-lg bg-white p-4">
         <h1 className="font-xl flex gap-2 font-bold text-pm-red">
           <ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5" />
-          한번 고민해보셔야해요!
+          한번 고민해 보셔야 해요!
         </h1>
 
         <ul className="mt-4 list-inside list-disc">
