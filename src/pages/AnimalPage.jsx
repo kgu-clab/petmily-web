@@ -24,41 +24,19 @@ import {
 } from 'iconoir-react';
 import genderIcon from '@assets/gender.svg';
 import kakaoIcon from '@assets/kakao.svg';
-import PropTypes from 'prop-types';
+
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-
-const ProfileTag = ({ icon, label, data }) => {
-  return (
-    <div className="flex w-20 flex-col items-center justify-center rounded-lg bg-gray-100 py-2">
-      {icon}
-
-      <ul className="mt-2 text-center">
-        <li className="text-sm font-semibold">{data}</li>
-        <li className="text-xs text-gray-600">{label}</li>
-      </ul>
-    </div>
-  );
-};
-
-ProfileTag.propTypes = {
-  icon: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
-};
+import { Alert } from '@common/alert';
+import AnimalProfileTag from '@components/animal/AnimalProfileTag';
 
 const AnimalPage = () => {
-  const MySwal = withReactContent(Swal);
   const { id } = useParams();
 
   const onClickRequest = () => {
-    MySwal.fire({
+    Alert({
       title: '분양 요청',
       text: '해당 반려동물에게 분양 요청을 하시겠습니까?',
       icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '확인',
-      cancelButtonText: '취소',
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
@@ -67,6 +45,30 @@ const AnimalPage = () => {
           'success',
         );
       }
+    });
+  };
+
+  const onClickReport = () => {
+    Alert({
+      title: '신고',
+      input: 'select',
+      inputOptions: {
+        1: '스팸홍보/도배글입니다.',
+        3: '불법정보를 포함하고 있습니다.',
+        5: '욕설/생명경시/혐호/차별적 표현입니다.',
+        6: '개인정보 노출 게시물입니다.',
+        7: '불쾌한 표현이 있습니다.',
+      },
+      inputPlaceholder: '사유선택',
+      inputValidator: (value) => {
+        return new Promise((resolve) => {
+          if (value === '') {
+            resolve('사유를 선택해주세요.');
+          } else {
+            resolve();
+          }
+        });
+      },
     });
   };
 
@@ -139,6 +141,7 @@ const AnimalPage = () => {
             <Button
               color="red"
               className="flex items-center justify-center gap-1 whitespace-nowrap"
+              onClick={onClickReport}
             >
               <Megaphone className="h-4 w-4" />
               신고
@@ -154,52 +157,52 @@ const AnimalPage = () => {
         </h1>
 
         <div className="mt-4 grid grid-cols-5 place-items-center gap-4">
-          <ProfileTag
+          <AnimalProfileTag
             icon={<SwatchIcon className="h-5 w-5" />}
             label="품종"
             data="사모예드"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<TagIcon className="h-5 w-5" />}
             label="이름"
             data="바둑이"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<ColorFilter className="h-5 w-5" />}
             label="색상"
             data="누런색"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<img src={genderIcon} alt="icon" className="h-5 w-5" />}
             label="성별"
             data="남"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<BirthdayCake className="h-5 w-5" />}
             label="생일"
             data="3월 23일"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<BirthdayCake className="h-5 w-5" />}
             label="나이"
             data="3"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<ScaleIcon className="h-5 w-5" />}
             label="몸무게"
             data="20KG"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<ColorPicker className="h-5 w-5" />}
             label="필수 접종"
             data="2차"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<Hospital className="h-5 w-5" />}
             label="중성화"
             data="유"
           />
-          <ProfileTag
+          <AnimalProfileTag
             icon={<Heart className="h-5 w-5" />}
             label="최애 간식"
             data="소세지"
