@@ -23,6 +23,8 @@ import {
 import genderIcon from '@assets/gender.svg';
 import kakaoIcon from '@assets/kakao.svg';
 import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const ProfileTag = ({ icon, label, data }) => {
   return (
@@ -44,7 +46,27 @@ ProfileTag.propTypes = {
 };
 
 const AnimalPage = () => {
+  const MySwal = withReactContent(Swal);
   const { id } = useParams();
+
+  const onClickRequest = () => {
+    MySwal.fire({
+      title: '분양 요청',
+      text: '해당 반려동물에게 분양 요청을 하시겠습니까?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '확인',
+      cancelButtonText: '취소',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          '분양 요청',
+          '해당 반려동물에게 분양 요청을 했습니다.',
+          'success',
+        );
+      }
+    });
+  };
 
   return (
     <div className="grid grid-cols-2 gap-4">
@@ -107,9 +129,10 @@ const AnimalPage = () => {
             <Button
               color="blue"
               className="flex items-center justify-center gap-1 whitespace-nowrap"
+              onClick={onClickRequest}
             >
               <BookmarkBook className="h-4 w-4" />
-              예약
+              분양 요청
             </Button>
             <Button
               color="red"
