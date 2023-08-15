@@ -10,6 +10,7 @@ import AnimalRegistrationPage from '@pages/AnimalRegistrationPage';
 import MyPage from '@pages/MyPage';
 import ContractPage from '@pages/ContractPage';
 import GuidePage from '@pages/GuidePage';
+import ShelterSalesPage from '@pages/ShelterSalesPage';
 
 const Section = () => {
   return (
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/professional',
         element: <ProfessionalSalesPage />,
+      },
+      {
+        path: '/shelter',
+        element: <ShelterSalesPage />,
       },
       {
         path: '/animal/:id',
