@@ -88,7 +88,7 @@ const Sidebar = () => {
                   전문업체
                 </ListItem>
 
-                <ListItem>
+                <ListItem onClick={() => handleOpen(0, '/shelter')}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
