@@ -4,6 +4,7 @@ import {
   BuildingOffice2Icon,
   UserIcon,
 } from '@heroicons/react/24/outline';
+import { Navigate } from 'react-router-dom';
 
 const SignUpPage = () => {
   const [id, setId] = useState('');
@@ -287,6 +288,16 @@ const SignUpPage = () => {
         )}
       </form>
 
+      {selectedIcon === 'user' && (
+        <button
+          className="mb-12 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
+          type="button"
+          onClick={Navigate}
+        >
+          설문 조사하기
+        </button>
+      )}
+
       <hr />
 
       {/* 이용약관 */}
@@ -304,7 +315,7 @@ const SignUpPage = () => {
       </div>
 
       {/* 이용약관 동의 */}
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <input
           type="checkbox"
           className="mr-2 h-5 w-5 rounded border-gray-300 focus:border-pm-main focus:ring-pm-main"
@@ -317,6 +328,13 @@ const SignUpPage = () => {
           이용약관에 전체동의합니다
         </label>
       </div>
+      <button
+        className="mt-8 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
+        type="button"
+        onClick={Navigate}
+      >
+        가입하기
+      </button>
     </div>
   );
 };

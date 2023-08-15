@@ -4,6 +4,7 @@ import ContentCard from '@components/ui/ContentCard';
 import Table from '@components/ui/Table';
 import Titlebar from '@components/ui/Titlebar';
 
+
 const GuidePage = () => {
   return (
     <div className="flex flex-col gap-16">
@@ -80,6 +81,7 @@ const GuidePage = () => {
           headers={['번호', '제목', '작성자', '작성일']}
         ></Table>
       </div>
+
     </div>
   );
 };
