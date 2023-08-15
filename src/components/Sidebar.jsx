@@ -8,11 +8,11 @@ import {
   AccordionBody,
 } from '@material-tailwind/react';
 import {
-  Cog6ToothIcon,
   BookOpenIcon,
   HomeIcon,
   BuildingStorefrontIcon,
   ExclamationTriangleIcon,
+  UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
@@ -155,7 +155,7 @@ const Sidebar = () => {
 
           <hr className="my-2 border-blue-gray-50" />
 
-          <ListItem>
+          <ListItem onClick={() => handleOpen(0, '/guide')}>
             <ListItemPrefix>
               <BookOpenIcon className="h-5 w-5" />
             </ListItemPrefix>
@@ -169,11 +169,11 @@ const Sidebar = () => {
             고객센터
           </ListItem>
 
-          <ListItem>
+          <ListItem onClick={() => handleOpen(0, '/mypage')}>
             <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
+              <UserCircleIcon className="h-5 w-5" />
             </ListItemPrefix>
-            설정
+            마이페이지
           </ListItem>
         </List>
       </div>
