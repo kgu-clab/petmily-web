@@ -18,6 +18,8 @@ import {
   BookmarkBook,
   ColorFilter,
   ColorPicker,
+  Heart,
+  Hospital,
   Megaphone,
 } from 'iconoir-react';
 import genderIcon from '@assets/gender.svg';
@@ -174,6 +176,11 @@ const AnimalPage = () => {
           />
           <ProfileTag
             icon={<BirthdayCake className="h-5 w-5" />}
+            label="생일"
+            data="3월 23일"
+          />
+          <ProfileTag
+            icon={<BirthdayCake className="h-5 w-5" />}
             label="나이"
             data="3"
           />
@@ -186,6 +193,16 @@ const AnimalPage = () => {
             icon={<ColorPicker className="h-5 w-5" />}
             label="필수 접종"
             data="2차"
+          />
+          <ProfileTag
+            icon={<Hospital className="h-5 w-5" />}
+            label="중성화"
+            data="유"
+          />
+          <ProfileTag
+            icon={<Heart className="h-5 w-5" />}
+            label="최애 간식"
+            data="소세지"
           />
         </div>
       </div>
