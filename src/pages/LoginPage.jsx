@@ -1,28 +1,35 @@
+import { Alert } from '@common/alert';
+import { postLogin } from '@common/api';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useMutation } from 'react-query';
 
 const LoginPage = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const { mutate } = useMutation(postLogin, {
+    onSuccess: () => {
+      Alert({ title: 'Login' });
+    },
+    onError: () => {
+      setErrorMessage('아이디 또는 비밀번호를 확인 후 다시 입력해주세요.');
+    },
+  });
+
   const onChangeId = (e) => {
     setId(e.target.value);
   };
 
-  const onChangePw = (e) => {
+  const onChangePassword = (e) => {
     setPassword(e.target.value);
   };
 
   const onClickLogin = () => {
-    if (id && password) {
-      alert(id + '님 환영합니다!');
-      setId('');
-      setPassword('');
-      setErrorMessage('');
-    } else {
-      setErrorMessage('아이디 또는 비밀번호를 확인 후 다시 입력해주세요');
-    }
+    mutate({
+      id,
+      password,
+    });
   };
 
   const onClickRegister = () => {};
@@ -48,15 +55,17 @@ const LoginPage = () => {
             id="password"
             name="password"
             value={password}
-            onChange={onChangePw}
+            onChange={onChangePassword}
             placeholder="비밀번호"
           />
         </div>
+
         {errorMessage && (
           <p className="mt-5 text-center text-sm text-red-500">
             {errorMessage}
           </p>
         )}
+
         <div className="flex flex-col">
           <button
             className="my-6 h-10 rounded-lg bg-pm-main text-base text-white hover:bg-blue-700"
