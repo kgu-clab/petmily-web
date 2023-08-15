@@ -8,6 +8,7 @@ import AnimalListPage from '@pages/AnimalListPage';
 import LoginPage from '@pages/LoginPage';
 import AnimalRegistrationPage from '@pages/AnimalRegistrationPage';
 import MyPage from '@pages/MyPage';
+import ContractPage from '@pages/ContractPage';
 
 const Section = () => {
   return (
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: '/mypage',
         element: <MyPage />,
+      },
+      {
+        path: '/contract',
+        element: <ContractPage />,
       },
     ],
   },

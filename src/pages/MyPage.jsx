@@ -117,7 +117,9 @@ const MyPage = () => {
             <td>한관희전문분양</td>
             <td>23.08.16</td>
             <td>
-              <Link className="text-pm-main">승인 (계약서)</Link>
+              <Link to={'/contract'} className="text-pm-main">
+                승인 (계약서)
+              </Link>
             </td>
           </tr>
         </Table>
