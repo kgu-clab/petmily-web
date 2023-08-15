@@ -35,7 +35,7 @@ const AnimalListPage = () => {
       <AnimalSection
         title="개인무료분양"
         sub="개인 가정의 무료 분양입니다."
-        to="/individual"
+        to="/personal"
       >
         <AnimalCard
           title="시고르자브종"

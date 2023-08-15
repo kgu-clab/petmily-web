@@ -30,12 +30,14 @@ const HomePage = () => {
           <ThemeCard
             title="고양이"
             sub="모든 고양이과의 분양 정보를 볼 수 있어요."
+            to="/list"
             image="https://images.unsplash.com/photo-1583795128727-6ec3642408f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1657&q=80"
           />
 
           <ThemeCard
             title="새"
             sub="앵무새 등 조류의 분양 정보를 볼 수 있어요."
+            to="/list"
             image="https://images.unsplash.com/photo-1549608276-5786777e6587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
           />
 
@@ -43,6 +45,7 @@ const HomePage = () => {
             <ThemeCard
               title="물고기"
               sub="구피, 금붕어 등 다양한 애완 물고기의 분양 정보를 볼 수 있어요."
+              to="/list"
               image="https://images.unsplash.com/photo-1578764843877-f0f292ea5b0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
             />
           </div>
@@ -51,6 +54,7 @@ const HomePage = () => {
             <ThemeCard
               title="소형 동물"
               sub="햄스터, 토끼, 고슴도치 등 기르기 쉬운 작은 애완동물의 분양 정보를 볼 수 있어요."
+              to="/list"
               image="https://images.unsplash.com/photo-1519196215731-1d6799ca0ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
             />
           </div>
@@ -58,6 +62,7 @@ const HomePage = () => {
           <ThemeCard
             title="파충류"
             sub="거북이, 도마뱀 등 파충류의 분양 정보를 볼 수 있어요. "
+            to="/list"
             image="https://images.unsplash.com/photo-1617540021016-72023b487e99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1548&q=80"
           />
         </div>
