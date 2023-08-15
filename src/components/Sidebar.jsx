@@ -95,7 +95,7 @@ const Sidebar = () => {
                   보호소
                 </ListItem>
 
-                <ListItem>
+                <ListItem onClick={() => handleOpen(0, '/personal')}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
@@ -143,7 +143,7 @@ const Sidebar = () => {
                   새상품
                 </ListItem>
 
-                <ListItem>
+                <ListItem onClick={() => handleOpen(0, '/store/used')}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
