@@ -11,10 +11,17 @@ import MyPage from '@pages/MyPage';
 import ContractPage from '@pages/ContractPage';
 import GuidePage from '@pages/GuidePage';
 import ShelterSalesPage from '@pages/ShelterSalesPage';
+import PersonalSalesPage from '@pages/PersonalSalesPage';
+import ScrollToTop from '@components/ScrollToTop';
+import SalePage from '@pages/SalePage';
+import SaleDetail from '@pages/SaleDetailPage';
+import SignUpPage from '@pages/SignUpPage';
+import SurveyPage from '@pages/SurveyPage';
 
 const Section = () => {
   return (
     <section>
+      <ScrollToTop />
       <Sidebar />
 
       <div className="ml-[18rem] grow p-5">
@@ -43,6 +50,10 @@ const router = createBrowserRouter([
         element: <ShelterSalesPage />,
       },
       {
+        path: '/personal',
+        element: <PersonalSalesPage />,
+      },
+      {
         path: '/animal/:id',
         element: <AnimalPage />,
       },
@@ -59,6 +70,14 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
+        path: '/signup',
+        element: <SignUpPage />,
+      },
+      {
+        path: '/survey',
+        element: <SurveyPage />,
+      },
+      {
         path: '/mypage',
         element: <MyPage />,
       },
@@ -69,6 +88,14 @@ const router = createBrowserRouter([
       {
         path: '/contract',
         element: <ContractPage />,
+      },
+      {
+        path: '/store/used',
+        element: <SalePage />,
+      },
+      {
+        path: '/store/:id',
+        element: <SaleDetail />,
       },
     ],
   },
