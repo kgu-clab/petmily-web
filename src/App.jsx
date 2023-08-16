@@ -17,6 +17,7 @@ import SalePage from '@pages/SalePage';
 import SaleDetail from '@pages/SaleDetailPage';
 import SignUpPage from '@pages/SignUpPage';
 import SurveyPage from '@pages/SurveyPage';
+import ErrorPage from '@pages/ErrorPage';
 
 const Section = () => {
   return (
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
   {
     path: '',
     element: <Section />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '',
