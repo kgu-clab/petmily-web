@@ -29,3 +29,13 @@ export const postAdoptionBoard = async (payload) => {
   const res = await server.post(`/adoption-boards`, payload);
   return res.data;
 };
+
+export const getAdoptionBoards = async (type) => {
+  const res = await server.get(`/adoption-boards/search?userType=${type}`);
+  return res.data.data;
+};
+
+export const getAdoptionBoardsInfo = async (id) => {
+  const res = await server.get(`/adoption-boards/info?boardId=${id}`);
+  return res.data.data;
+};
