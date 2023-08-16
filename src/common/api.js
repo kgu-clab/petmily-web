@@ -19,3 +19,13 @@ export const postVerificationCode = async (payload) => {
   const res = await server.post(`/sms/verify`, payload);
   return res.data.data;
 };
+
+export const getMyInfo = async () => {
+  const res = await server.get(`/users/my-info`);
+  return res.data.data;
+};
+
+export const postAdoptionBoard = async (payload) => {
+  const res = await server.post(`/adoption-boards`, payload);
+  return res.data;
+};
