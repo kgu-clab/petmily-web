@@ -150,7 +150,7 @@ const AnimalRegistrationPage = () => {
     if (res.data.success) {
       registrationMutate.mutate({
         ...inputs,
-        imageUrl: res.data.data || [],
+        imgUrl: JSON.stringify(res.data.data || []),
       });
     }
   };
