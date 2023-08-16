@@ -15,6 +15,7 @@ export const Alert = (option) => {
 export const SuccessAlert = (option) => {
   return MySwal.fire({
     ...option,
+    icon: 'success',
     confirmButtonText: '확인',
   });
 };
