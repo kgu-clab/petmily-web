@@ -13,6 +13,7 @@ import {
   BuildingStorefrontIcon,
   ExclamationTriangleIcon,
   UserCircleIcon,
+  ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
@@ -22,6 +23,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const auth = sessionStorage.getItem('access');
 
   const [open, setOpen] = useState(0);
 
@@ -169,12 +171,21 @@ const Sidebar = () => {
             고객센터
           </ListItem>
 
-          <ListItem onClick={() => handleOpen(0, '/mypage')}>
-            <ListItemPrefix>
-              <UserCircleIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            마이페이지
-          </ListItem>
+          {auth ? (
+            <ListItem onClick={() => handleOpen(0, '/mypage')}>
+              <ListItemPrefix>
+                <UserCircleIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              마이페이지
+            </ListItem>
+          ) : (
+            <ListItem onClick={() => handleOpen(0, '/login')}>
+              <ListItemPrefix>
+                <ArrowRightOnRectangleIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              로그인
+            </ListItem>
+          )}
         </List>
       </div>
 

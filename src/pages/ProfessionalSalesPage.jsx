@@ -11,6 +11,8 @@ import { Breadcrumbs } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
 import AnimalCard from '@components/ui/AnimalCard';
 import Searchbar from '@components/ui/Searchbar';
+import { useQuery } from 'react-query';
+import { getAdoptionBoards } from '@common/api';
 
 const animals = [
   { name: '전체', icon: layersIcon },
@@ -25,57 +27,66 @@ const animals = [
 const ProfessionalSalesPage = () => {
   const [selected, setSelected] = useState('전체');
 
-  return (
-    <div>
-      <div className="flex justify-between gap-6">
-        <Breadcrumbs
-          fullWidth
-          className="h-10 whitespace-nowrap rounded-lg bg-gray-300"
-        >
-          <Link to="/">분양</Link>
-          <p className="font-semibold">전문업체</p>
-        </Breadcrumbs>
+  const { data, isSuccess } = useQuery('animalList', () =>
+    getAdoptionBoards('PROFESSIONAL'),
+  );
 
-        <div className="flex gap-6">
-          {animals.map((item) => (
-            <CategoryButton
-              key={item.name}
-              icon={item.icon}
-              label={item.name}
-              checked={selected === item.name}
-              onClick={() => setSelected(item.name)}
-            />
-          ))}
-        </div>
+  if (isSuccess)
+    return (
+      <div>
+        <div className="flex justify-between gap-6">
+          <Breadcrumbs
+            fullWidth
+            className="h-10 whitespace-nowrap rounded-lg bg-gray-300"
+          >
+            <Link to="/">분양</Link>
+            <p className="font-semibold">전문업체</p>
+          </Breadcrumbs>
 
-        <div className="flex transition-all delay-150 hover:grow">
-          <Searchbar />
-        </div>
-      </div>
+          <div className="flex gap-6">
+            {animals.map((item) => (
+              <CategoryButton
+                key={item.name}
+                icon={item.icon}
+                label={item.name}
+                checked={selected === item.name}
+                onClick={() => setSelected(item.name)}
+              />
+            ))}
+          </div>
 
-      <div className="mt-10">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-extrabold">{selected}</h1>
-
-          <div className="flex gap-2 whitespace-nowrap text-sm">
-            <button className="hover:font-semibold">최신순</button>
-            <p>|</p>
-            <button className="hover:font-semibold">추천순</button>
+          <div className="flex transition-all delay-150 hover:grow">
+            <Searchbar />
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-4 gap-4">
-          <AnimalCard
-            title="시고르자브종"
-            provider="한관희전문분양"
-            icon={dogIcon}
-            price={100000}
-            to="/animal/1"
-          />
+        <div className="mt-10">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-extrabold">{selected}</h1>
+
+            <div className="flex gap-2 whitespace-nowrap text-sm">
+              <button className="hover:font-semibold">최신순</button>
+              <p>|</p>
+              <button className="hover:font-semibold">추천순</button>
+            </div>
+          </div>
+
+          <div className="mt-4 grid grid-cols-4 gap-4">
+            {data.map((animal) => (
+              <AnimalCard
+                key={animal.id}
+                src={JSON.parse(animal.imgUrl)[0]}
+                title={animal.species}
+                provider={animal.writer.nickname}
+                icon={dogIcon}
+                price={animal.price}
+                to={`/animal/${animal.id}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
 ProfessionalSalesPage.propTypes = {};

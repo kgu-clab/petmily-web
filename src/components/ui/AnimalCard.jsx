@@ -1,8 +1,9 @@
+import { API_BASE_URL } from '@common/environment';
 import { formatCurrency } from '@common/utils';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-const AnimalCard = ({ title, provider, price, icon, to }) => {
+const AnimalCard = ({ title, src, provider, price, icon, to }) => {
   const navigate = useNavigate();
 
   return (
@@ -10,11 +11,13 @@ const AnimalCard = ({ title, provider, price, icon, to }) => {
       className="flex cursor-pointer flex-col rounded-lg transition ease-in-out hover:shadow-lg"
       onClick={() => navigate(to)}
     >
-      <img
-        src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
-        alt=""
-        className="basis-3/5 rounded-t-lg object-cover"
-      />
+      {src && (
+        <img
+          src={`${API_BASE_URL}${src}`}
+          alt="animal image"
+          className="basis-3/5 rounded-t-lg object-cover"
+        />
+      )}
 
       <div className="grow rounded-b-lg bg-white p-2">
         <div className="flex items-center justify-between">
@@ -34,6 +37,7 @@ const AnimalCard = ({ title, provider, price, icon, to }) => {
 
 AnimalCard.propTypes = {
   title: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
   provider: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   icon: PropTypes.string.isRequired,

@@ -1,19 +1,24 @@
-import { Alert } from '@common/alert';
 import { postLogin } from '@common/api';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const { mutate } = useMutation(postLogin, {
-    onSuccess: () => {
-      Alert({ title: 'Login' });
-    },
-    onError: () => {
-      setErrorMessage('아이디 또는 비밀번호를 확인 후 다시 입력해주세요.');
+    onSuccess: (data) => {
+      if (data) {
+        sessionStorage.setItem('access', data.accessToken);
+        sessionStorage.setItem('refresh', data.refreshToken);
+        navigate('/');
+      } else {
+        setErrorMessage('아이디 또는 비밀번호를 확인 후 다시 입력해주세요.');
+      }
     },
   });
 
@@ -31,8 +36,6 @@ const LoginPage = () => {
       password,
     });
   };
-
-  const onClickRegister = () => {};
 
   return (
     <div className="mx-auto my-20 h-fit w-fit bg-white p-10">
@@ -84,7 +87,7 @@ const LoginPage = () => {
           <button
             className="h-10 w-80 rounded-lg bg-gray-400 text-base text-white hover:bg-gray-500"
             type="button"
-            onClick={onClickRegister}
+            onClick={() => navigate('/signup')}
           >
             회원가입
           </button>
