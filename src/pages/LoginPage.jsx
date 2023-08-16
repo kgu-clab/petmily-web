@@ -10,16 +10,15 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const { mutate, data } = useMutation(postLogin, {
-    onSuccess: () => {
+  const { mutate } = useMutation(postLogin, {
+    onSuccess: (data) => {
       if (data) {
         sessionStorage.setItem('access', data.accessToken);
         sessionStorage.setItem('refresh', data.refreshToken);
         navigate('/');
+      } else {
+        setErrorMessage('아이디 또는 비밀번호를 확인 후 다시 입력해주세요.');
       }
-    },
-    onError: () => {
-      setErrorMessage('아이디 또는 비밀번호를 확인 후 다시 입력해주세요.');
     },
   });
 
