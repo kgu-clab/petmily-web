@@ -11,3 +11,10 @@ export const Alert = (option) => {
     cancelButtonText: '취소',
   });
 };
+
+export const SuccessAlert = (option) => {
+  return MySwal.fire({
+    ...option,
+    confirmButtonText: '확인',
+  });
+};
