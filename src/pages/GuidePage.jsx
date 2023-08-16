@@ -3,11 +3,11 @@ import PopularGuideSection from '@components/home/PopularGuideSection';
 import ContentCard from '@components/ui/ContentCard';
 import Table from '@components/ui/Table';
 import Titlebar from '@components/ui/Titlebar';
-
+import { Breadcrumbs } from '@material-tailwind/react';
 
 const GuidePage = () => {
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col space-y-10">
       {/* 인기 지식정보 */}
       <PopularGuideSection>
         <GuideTagSection title="행동">
@@ -81,7 +81,6 @@ const GuidePage = () => {
           headers={['번호', '제목', '작성자', '작성일']}
         ></Table>
       </div>
-
     </div>
   );
 };

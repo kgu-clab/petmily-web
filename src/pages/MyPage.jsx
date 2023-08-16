@@ -48,15 +48,15 @@ const MyPage = () => {
           className="b-4 m-4 h-48 w-48 rounded-full object-cover"
           src="https://images.unsplash.com/photo-1519196215731-1d6799ca0ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
         />
-        <div className="my-2 ml-4 space-y-8">
+        <div className="my-auto ml-4 space-y-4">
           <p className="text-lg text-pm-main">안녕하세요</p>
           <span className="text-3xl font-semibold">이름 </span>
           <span className="text-lg text-pm-main">님!</span>
           <p className="text-lg text-gray-500">아이디</p>
           <div className="flex">
-            <HeartIcon alt="heart" className="m-1 h-5 w-5" />
+            <HeartIcon alt="heart" className="my-1 mr-1 h-5 w-5" />
             <span className=" text-2xl">멍멍</span>
-            <span className="ml-1 text-lg text-pm-main">
+            <span className="ml-1 text-lg text-pm-main ">
               이와 함께한지 500일!
             </span>
           </div>

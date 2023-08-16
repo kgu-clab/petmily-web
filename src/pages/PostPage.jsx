@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Textarea, Button } from '@material-tailwind/react';
+import { Textarea, Button, Breadcrumbs } from '@material-tailwind/react';
 import { useState } from 'react';
 
 const CommentBoxTextarea = ({ onCommentSubmit }) => {
@@ -63,10 +63,16 @@ const PostPage = () => {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex flex-col">
+      <Breadcrumbs
+        fullWidth
+        className="h-10 whitespace-nowrap rounded-lg bg-gray-300"
+      >
+        <p className="font-semibold">가이드</p>
+      </Breadcrumbs>
       {postDetail.map(({ sort, title, date, click, content }) => {
         return (
-          <div className="ml-6 w-full space-y-4" key={title}>
+          <div className="w-full space-y-4" key={title}>
             <hr />
             <h1 className="b-4 border-b border-gray-500 pb-4 text-3xl font-bold">
               {title}
@@ -78,7 +84,7 @@ const PostPage = () => {
               <span className="px-2">조회 수 : {click}</span>
             </div>
             <hr />
-            <div className="mt-4 h-auto w-full overflow-auto bg-white p-4">
+            <div className="h-auto w-full overflow-auto bg-white p-4">
               <p className="p-4">
                 <div className="space-y-2 p-4">
                   <span>

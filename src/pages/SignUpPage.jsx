@@ -4,7 +4,8 @@ import {
   BuildingOffice2Icon,
   UserIcon,
 } from '@heroicons/react/24/outline';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { Alert } from '../common/alert';
 
 const SignUpPage = () => {
   const [id, setId] = useState('');
@@ -20,6 +21,8 @@ const SignUpPage = () => {
   const [sendMessage, setSendMessage] = useState('');
   const [verificationNumber, setVerificationNumber] = useState('');
   const [terms, setTerms] = useState('');
+
+  const navigate = useNavigate();
 
   const handleIconClick = (iconName) => {
     setSelectedIcon(iconName);
@@ -288,11 +291,12 @@ const SignUpPage = () => {
         )}
       </form>
 
+      {/* 개인회원 설문조사 */}
       {selectedIcon === 'user' && (
         <button
           className="mb-12 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
           type="button"
-          onClick={Navigate}
+          onClick={() => navigate('/survey')}
         >
           설문 조사하기
         </button>
@@ -331,7 +335,7 @@ const SignUpPage = () => {
       <button
         className="mt-8 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
         type="button"
-        onClick={Navigate}
+        onClick
       >
         가입하기
       </button>

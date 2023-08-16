@@ -27,7 +27,7 @@ const ShelterSalesPage = () => {
 
   return (
     <div>
-      <div className="flex justify-between gap-6">
+      <div className="flex flex-col justify-between gap-6">
         <Breadcrumbs
           fullWidth
           className="h-10 whitespace-nowrap rounded-lg bg-gray-300"

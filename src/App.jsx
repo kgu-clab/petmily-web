@@ -14,9 +14,11 @@ import ShelterSalesPage from '@pages/ShelterSalesPage';
 import PersonalSalesPage from '@pages/PersonalSalesPage';
 import ScrollToTop from '@components/ScrollToTop';
 import SalePage from '@pages/SalePage';
-import SaleDetail from '@pages/SaleDetailPage';
+import SaleDetailPage from '@pages/SaleDetailPage';
 import SignUpPage from '@pages/SignUpPage';
 import SurveyPage from '@pages/SurveyPage';
+import CommunityPage from '@pages/CommunityPage';
+import SupportPage from '@pages/SupportPage';
 
 const Section = () => {
   return (
@@ -95,7 +97,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/store/:id',
-        element: <SaleDetail />,
+        element: <SaleDetailPage />,
+      },
+      {
+        path: 'community',
+        element: <CommunityPage />,
+      },
+      {
+        path: 'support',
+        element: <SupportPage />,
       },
     ],
   },

@@ -1,12 +1,14 @@
 import { formatCurrency } from '@common/utils';
 import { HeartIcon, BuildingStorefrontIcon } from '@heroicons/react/24/outline';
-import { Card } from '@material-tailwind/react';
-import { Navigate } from 'react-router-dom';
-const Product = ({ name, image, price, like }) => {
+import { Breadcrumbs, Card } from '@material-tailwind/react';
+import { useNavigate } from 'react-router-dom';
+
+const Product = ({ name, image, price, like, to }) => {
+  const navigate = useNavigate();
   return (
     <Card
       className="flex flex-col rounded-lg transition ease-in-out hover:scale-105 hover:shadow-lg"
-      onClick={() => Navigate(to)}
+      onClick={() => navigate(to)}
     >
       <img src={image} className="h-full w-full rounded-md object-cover " />
       <div className="p-2">
@@ -25,11 +27,13 @@ const Product = ({ name, image, price, like }) => {
 
 const SalePage = () => {
   return (
-    <div className="flex flex-col space-y-10 p-4">
-      <div className="flex">
-        <BuildingStorefrontIcon className="mx-2 h-10 w-10" />
-        <h1 className="text-4xl font-extrabold">중고거래</h1>
-      </div>
+    <div className="flex flex-col justify-between space-y-4">
+      <Breadcrumbs
+        fullWidth
+        className="h-10 whitespace-nowrap rounded-lg bg-gray-300"
+      >
+        <p className="font-semibold">중고거래</p>
+      </Breadcrumbs>
 
       <div className="grid grid-cols-3 gap-4">
         <Product
@@ -37,6 +41,7 @@ const SalePage = () => {
           image="https://images.unsplash.com/photo-1526925712774-2833a7ecd0d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2474&q=80"
           price="1000"
           like="4"
+          to="/store/id"
         />
         <Product
           name="리드줄"

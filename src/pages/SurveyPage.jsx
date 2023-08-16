@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Choice = ({ text }) => {
   return (
@@ -13,6 +13,8 @@ const Choice = ({ text }) => {
 };
 
 const SurveyPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="mx-auto my-20 flex h-fit w-fit flex-col space-y-8 bg-white p-10">
       <h1 className="text-center text-4xl font-extrabold">설문조사</h1>
@@ -134,7 +136,7 @@ const SurveyPage = () => {
       <button
         className="mt-8 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
         type="button"
-        onClick={Navigate}
+        onClick={() => navigate('/signup')}
       >
         제출하기
       </button>

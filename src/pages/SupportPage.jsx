@@ -6,8 +6,8 @@ import {
 
 const SupportPage = () => {
   return (
-    <div className="mt-20 h-auto w-full overflow-auto p-4">
-      <div className="grid gap-4 space-y-10">
+    <div className="mt-20 h-screen w-full">
+      <div className="grid gap-4 space-y-20">
         <div>
           <ScaleIcon className="mx-auto h-20 w-20" />
           <p className="text-center">신고 접수</p>

@@ -1,5 +1,6 @@
 import ThemeCard from '@components/ui/ThemeCard';
 import { UserGroupIcon } from '@heroicons/react/24/outline';
+import { Breadcrumbs } from '@material-tailwind/react';
 
 const popularPostInfomation = [
   {
@@ -58,14 +59,9 @@ const postInfomation = [
 const CommunityPage = () => {
   return (
     <div>
-      <div className="flex flex-col space-y-8 p-2">
-        <div className="flex">
-          <UserGroupIcon alt="community" className="h-10 w-10" />
-          <div className="ml-2 p-1 text-4xl font-bold">커뮤니티</div>
-        </div>
-
+      <div className="my-10 flex flex-col space-y-12">
         {/* 인증 게시글 */}
-        <p className="text-center text-xl font-extrabold">인증 게시판</p>
+        <p className="text-center text-2xl font-extrabold">인증 게시판</p>
         <div className="grid grid-cols-3 gap-2">
           <ThemeCard
             title="라이언"
@@ -92,7 +88,7 @@ const CommunityPage = () => {
 
         {/* 인기글 리스트 */}
         <div>
-          <p className="mb-4 text-center text-xl font-extrabold">인기글</p>
+          <p className="mb-4 text-center text-2xl font-extrabold">인기글</p>
           <table className="w-full table-fixed border-separate ">
             <thead>
               <tr>
@@ -129,7 +125,7 @@ const CommunityPage = () => {
 
         {/* 전체글 리스트 */}
         <div>
-          <p className="mb-4 text-center text-xl font-extrabold">전체글</p>
+          <p className="mb-4 text-center text-2xl font-extrabold">전체글</p>
           <table className=" w-full table-fixed border-separate">
             <thead>
               <tr>

@@ -13,6 +13,7 @@ import {
   BuildingStorefrontIcon,
   ExclamationTriangleIcon,
   UserCircleIcon,
+  UserGroupIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
@@ -105,53 +106,21 @@ const Sidebar = () => {
             </AccordionBody>
           </Accordion>
 
-          <Accordion
-            open={open === 2}
-            icon={
-              <ChevronDownIcon
-                strokeWidth={2.5}
-                className={`mx-auto h-4 w-4 transition-transform ${
-                  open === 2 ? 'rotate-180' : ''
-                }`}
-              />
-            }
-          >
-            <ListItem className="p-0" selected={open === 2}>
-              <AccordionHeader
-                onClick={() => handleOpen(2)}
-                className="border-b-0 p-3"
-              >
-                <ListItemPrefix>
-                  <BuildingStorefrontIcon className="h-5 w-5" />
-                </ListItemPrefix>
+          {/* 스토어 간략화 */}
+          <ListItem onClick={() => handleOpen(0, '/store/used')}>
+            <ListItemPrefix>
+              <BuildingStorefrontIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            스토어
+          </ListItem>
 
-                <Typography
-                  color="blue-gray"
-                  className="mr-auto text-sm font-normal"
-                >
-                  스토어
-                </Typography>
-              </AccordionHeader>
-            </ListItem>
-
-            <AccordionBody className="py-1">
-              <List className="p-0 text-sm">
-                <ListItem>
-                  <ListItemPrefix>
-                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                  </ListItemPrefix>
-                  새상품
-                </ListItem>
-
-                <ListItem onClick={() => handleOpen(0, '/store/used')}>
-                  <ListItemPrefix>
-                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                  </ListItemPrefix>
-                  중고물품
-                </ListItem>
-              </List>
-            </AccordionBody>
-          </Accordion>
+          {/* 커뮤니티 추가 */}
+          <ListItem onClick={() => handleOpen(0, '/community')}>
+            <ListItemPrefix>
+              <UserGroupIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            커뮤니티
+          </ListItem>
 
           <hr className="my-2 border-blue-gray-50" />
 
@@ -162,7 +131,7 @@ const Sidebar = () => {
             가이드
           </ListItem>
 
-          <ListItem>
+          <ListItem onClick={() => handleOpen(0, '/support')}>
             <ListItemPrefix>
               <PeopleTag className="h-5 w-5" />
             </ListItemPrefix>

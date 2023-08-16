@@ -1,6 +1,6 @@
 import { formatCurrency } from '@common/utils';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
-import { Button, Textarea } from '@material-tailwind/react';
+import { Button, Carousel, Textarea } from '@material-tailwind/react';
 import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
@@ -58,10 +58,24 @@ const SaleDetail = () => {
 
   return (
     <div className="mt-4 flex h-auto w-full flex-col space-y-4 overflow-auto rounded-md bg-white p-4">
-      <img
-        src="https://images.unsplash.com/photo-1526925712774-2833a7ecd0d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2474&q=80"
-        className="h-full w-full rounded-md"
-      />
+      {/* 상품 사진 수정 */}
+      <Carousel className="h-full w-full rounded-md" autoplay>
+        <img
+          src="https://images.unsplash.com/photo-1526925712774-2833a7ecd0d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2474&q=80"
+          alt="image-1"
+          className="h-full w-full rounded-md"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1526925712774-2833a7ecd0d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2474&q=80"
+          alt="image-1"
+          className="h-full w-full rounded-md"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1526925712774-2833a7ecd0d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2474&q=80"
+          alt="image-1"
+          className="h-full w-full rounded-md"
+        />
+      </Carousel>
       <div className="flex space-x-3">
         <UserCircleIcon className="h-12 w-12" />
         <span className="my-3 font-bold">사용자명</span>
