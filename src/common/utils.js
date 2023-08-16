@@ -8,3 +8,13 @@ export const formatCurrency = (value) => {
   const formattedValue = value.toLocaleString('ko-KR');
   return formattedValue;
 };
+
+/**
+ * 전화번호를 형식에 맞게 변환하는 함수입니다.
+ * @param {string} value - 변환할 전화번호 값
+ * @returns {string} - 형식에 맞게 변환된 전화번호
+ */
+export const formatPhone = (value) =>
+  value
+    .replace(/[^0-9]/g, '')
+    .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
