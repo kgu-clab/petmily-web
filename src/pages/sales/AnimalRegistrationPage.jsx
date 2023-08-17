@@ -33,6 +33,7 @@ import { useRef, useState } from 'react';
 import { SuccessAlert } from '@common/alert';
 import { useNavigate } from 'react-router-dom';
 import server from '@common/server';
+import LoadingPage from '@pages/LoadingPage';
 
 const ProfileSlider = ({ label, value, onChange }) => {
   return (
@@ -103,7 +104,7 @@ const AnimalRegistrationPage = () => {
   const editorRef = useRef();
   const navigate = useNavigate();
 
-  const { data, isSuccess } = useQuery('myInfo', getMyInfo);
+  const { data, isSuccess, isLoading } = useQuery('myInfo', getMyInfo);
   const registrationMutate = useMutation(postAdoptionBoard, {
     onSuccess: (data) => {
       if (data.success) {
@@ -205,6 +206,10 @@ const AnimalRegistrationPage = () => {
       };
     }
   };
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   if (isSuccess)
     return (
