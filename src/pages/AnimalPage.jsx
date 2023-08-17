@@ -31,6 +31,7 @@ import AnimalProfileTag from '@components/animal/AnimalProfileTag';
 import { useQuery } from 'react-query';
 import { getAdoptionBoardsInfo } from '@common/api';
 import { SERVER_IMG } from '@common/environment';
+import server from '@common/server';
 
 const AnimalPage = () => {
   const { id } = useParams();
@@ -44,13 +45,19 @@ const AnimalPage = () => {
       title: '분양 요청',
       text: '해당 반려동물에게 분양 요청을 하시겠습니까?',
       icon: 'warning',
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          '분양 요청',
-          '해당 반려동물에게 분양 요청을 했습니다.',
-          'success',
-        );
+        const res = await server.post('/adoption-requests', {
+          animalAdoptionBoardId: id,
+        });
+
+        if (res.data.success) {
+          Swal.fire(
+            '분양 요청',
+            '해당 반려동물에게 분양 요청을 했습니다.',
+            'success',
+          );
+        }
       }
     });
   };
