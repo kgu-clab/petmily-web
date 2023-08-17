@@ -28,7 +28,7 @@ import {
 import AnimalSection from '@components/animal/AnimalSection';
 import { useMutation, useQuery } from 'react-query';
 import { getMyInfo, postAdoptionBoard } from '@common/api';
-import { formatPhone } from '@common/utils';
+import { formatPhone, formatUserType } from '@common/utils';
 import { useRef, useState } from 'react';
 import { SuccessAlert } from '@common/alert';
 import { useNavigate } from 'react-router-dom';
@@ -254,7 +254,7 @@ const AnimalRegistrationPage = () => {
                 </div>
 
                 <ul className="mt-4 leading-loose">
-                  <li>분류: {data.type}</li>
+                  <li>분류: {formatUserType(data.type)}</li>
                   <li>
                     동물판매업번호:
                     {data.businessNumber}
