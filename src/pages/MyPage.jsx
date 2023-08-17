@@ -1,6 +1,7 @@
 import {
   BuildingStorefrontIcon,
   Cog6ToothIcon,
+  IdentificationIcon,
 } from '@heroicons/react/24/outline';
 import { Breadcrumbs } from '@material-tailwind/react';
 import { Heart } from 'iconoir-react';
@@ -12,9 +13,10 @@ import { useQuery } from 'react-query';
 import { getMyInfo } from '@common/api';
 import MypageSalesInfo from './mypage/MypageSalesInfo';
 import MypageSetup from './mypage/MypageSetup';
+import LoadingPage from './LoadingPage';
 
 const MyPage = () => {
-  const { data, isSuccess } = useQuery('myInfo', getMyInfo);
+  const { data, isSuccess, isLoading } = useQuery('myInfo', getMyInfo);
 
   const [view, setView] = useState('마이펫');
 
@@ -24,6 +26,10 @@ const MyPage = () => {
     분양: <MypageSalesInfo />,
     설정: <MypageSetup />,
   }[view];
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   if (isSuccess)
     return (
@@ -51,7 +57,7 @@ const MyPage = () => {
 
           <div className="flex rounded-b-lg bg-white">
             <MypageCard
-              icon={<Heart className="h-10 w-10" />}
+              icon={<IdentificationIcon className="h-10 w-10" />}
               className={view === '마이펫' ? 'border-pm-main' : 'border-white'}
               label="마이펫"
               text="분양한 반려동물 정보를 볼 수 있어요."
