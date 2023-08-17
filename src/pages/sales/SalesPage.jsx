@@ -8,11 +8,13 @@ import fishIcon from '@assets/fish.webp';
 import chipmunkIcon from '@assets/chipmunk.webp';
 import iguanaIcon from '@assets/iguana.webp';
 import { Breadcrumbs } from '@material-tailwind/react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import AnimalCard from '@components/ui/AnimalCard';
 import Searchbar from '@components/ui/Searchbar';
 import { useQuery } from 'react-query';
 import { getAdoptionBoards } from '@common/api';
+import LoadingPage from '@pages/LoadingPage';
+import { formatUserType } from '../../common/utils';
 
 const animals = [
   { name: '전체', icon: layersIcon },
@@ -24,14 +26,20 @@ const animals = [
   { name: '파충류', icon: iguanaIcon },
 ];
 
-const ProfessionalSalesPage = () => {
+const SalesPage = () => {
+  const { type } = useParams();
+
   const [selected, setSelected] = useState('전체');
 
-  const { data, isSuccess } = useQuery('animalList', () =>
-    getAdoptionBoards('PROFESSIONAL'),
+  const { data, isSuccess, isLoading } = useQuery('animalList', () =>
+    getAdoptionBoards(type.toUpperCase()),
   );
 
-  if (isSuccess)
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
+  if (isSuccess) {
     return (
       <div>
         <div className="flex justify-between gap-6">
@@ -40,7 +48,7 @@ const ProfessionalSalesPage = () => {
             className="h-10 whitespace-nowrap rounded-lg bg-gray-300"
           >
             <Link to="/">분양</Link>
-            <p className="font-semibold">전문업체</p>
+            <p className="font-semibold">{formatUserType(type)}</p>
           </Breadcrumbs>
 
           <div className="flex gap-6">
@@ -72,7 +80,7 @@ const ProfessionalSalesPage = () => {
           </div>
 
           <div className="mt-4 grid grid-cols-4 gap-4">
-            {data.map((animal) => (
+            {data?.map((animal) => (
               <AnimalCard
                 key={animal.id}
                 src={JSON.parse(animal.imgUrl)[0]}
@@ -87,8 +95,9 @@ const ProfessionalSalesPage = () => {
         </div>
       </div>
     );
+  }
 };
 
-ProfessionalSalesPage.propTypes = {};
+SalesPage.propTypes = {};
 
-export default ProfessionalSalesPage;
+export default SalesPage;

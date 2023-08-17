@@ -1,24 +1,23 @@
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Sidebar from '@components/Sidebar';
 import HomePage from '@pages/HomePage';
-import ProfessionalSalesPage from '@pages/sales/ProfessionalSalesPage';
 import Footer from '@components/Footer';
 import AnimalPage from '@pages/animal/AnimalPage';
-import AnimalListPage from '@pages/sales/AnimalListPage';
+import SalesListPage from '@pages/sales/SalesListPage';
 import LoginPage from '@pages/auth/LoginPage';
-import AnimalRegistrationPage from '@pages/sales/AnimalRegistrationPage';
+import AnimalRegistrationPage from '@pages/animal/AnimalRegistrationPage';
 import MyPage from '@pages/mypage/MyPage';
 import ContractPage from '@pages/contract/ContractPage';
 import GuidePage from '@pages/guide/GuidePage';
-import ShelterSalesPage from '@pages/sales/ShelterSalesPage';
-import PersonalSalesPage from '@pages/sales/PersonalSalesPage';
 import ScrollToTop from '@components/ScrollToTop';
 import StorePage from '@pages/store/StorePage';
 import SaleDetail from '@pages/store/SaleDetailPage';
 import SignUpPage from '@pages/auth/SignUpPage';
 import SurveyPage from '@pages/auth/SurveyPage';
 import ErrorPage from '@pages/ErrorPage';
-import AnimalSalePage from '@pages/sales/AnimalSalePage';
+import SalesSelectPage from '@pages/sales/SalesSelectPage';
+import SalesPage from '@pages/sales/SalesPage';
+import SupportPage from '@pages/support/SupportPage';
 
 const Section = () => {
   return (
@@ -35,25 +34,16 @@ const Section = () => {
 
 const router = createBrowserRouter([
   {
-    path: '',
+    path: '/',
     element: <Section />,
-    errorElement: <ErrorPage />,
     children: [
       {
-        path: '',
+        path: '/',
         element: <HomePage />,
       },
       {
-        path: '/professional',
-        element: <ProfessionalSalesPage />,
-      },
-      {
-        path: '/shelter',
-        element: <ShelterSalesPage />,
-      },
-      {
-        path: '/personal',
-        element: <PersonalSalesPage />,
+        path: '/sales/:type',
+        element: <SalesPage />,
       },
       {
         path: '/animal/:id',
@@ -61,15 +51,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/animal/sale/:id',
-        element: <AnimalSalePage />,
+        element: <SalesSelectPage />,
       },
       {
-        path: '/animal/registration',
+        path: '/registration',
         element: <AnimalRegistrationPage />,
       },
       {
         path: '/list',
-        element: <AnimalListPage />,
+        element: <SalesListPage />,
       },
       {
         path: '/login',
@@ -102,6 +92,14 @@ const router = createBrowserRouter([
       {
         path: '/store/:id',
         element: <SaleDetail />,
+      },
+      {
+        path: '/support',
+        element: <SupportPage />,
+      },
+      {
+        path: '*',
+        element: <ErrorPage />,
       },
     ],
   },

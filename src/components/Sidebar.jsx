@@ -84,21 +84,21 @@ const Sidebar = () => {
 
             <AccordionBody className="py-1">
               <List className="p-0 text-sm">
-                <ListItem onClick={() => handleOpen(1, '/professional')}>
+                <ListItem onClick={() => handleOpen(1, '/sales/professional')}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
                   전문업체
                 </ListItem>
 
-                <ListItem onClick={() => handleOpen(0, '/shelter')}>
+                <ListItem onClick={() => handleOpen(0, '/sales/shelter')}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
                   보호소
                 </ListItem>
 
-                <ListItem onClick={() => handleOpen(0, '/personal')}>
+                <ListItem onClick={() => handleOpen(0, '/sales/individual')}>
                   <ListItemPrefix>
                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
@@ -158,7 +158,7 @@ const Sidebar = () => {
 
           <hr className="my-2 border-blue-gray-50" />
 
-          <ListItem onClick={() => handleOpen(0, '/animal/registration')}>
+          <ListItem onClick={() => handleOpen(0, '/registration')}>
             <ListItemPrefix>
               <DocumentTextIcon className="h-5 w-5" />
             </ListItemPrefix>
@@ -172,7 +172,7 @@ const Sidebar = () => {
             가이드
           </ListItem>
 
-          <ListItem>
+          <ListItem onClick={() => handleOpen(0, '/support')}>
             <ListItemPrefix>
               <PeopleTag className="h-5 w-5" />
             </ListItemPrefix>

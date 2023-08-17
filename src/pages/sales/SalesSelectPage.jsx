@@ -25,7 +25,7 @@ LabelBar.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-const AnimalSalePage = () => {
+const SalesSelectPage = () => {
   const { id } = useParams();
   const { data, isSuccess } = useQuery('animalSale', () =>
     getAdoptionBoardsInfo(id),
@@ -103,6 +103,6 @@ const AnimalSalePage = () => {
     );
 };
 
-AnimalSalePage.propTypes = {};
+SalesSelectPage.propTypes = {};
 
-export default AnimalSalePage;
+export default SalesSelectPage;

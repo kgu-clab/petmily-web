@@ -9,6 +9,7 @@ const MypageMyPetInfo = () => {
       />
 
       <Titlebar
+        className="mt-4"
         title="추천 콘텐츠"
         sub="분양한 반려동물에 관련된 콘텐츠에요."
       />
