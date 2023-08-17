@@ -102,8 +102,10 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="mx-auto my-20 flex h-fit w-fit flex-col bg-white p-10">
-      <h1 className="my-10 text-center text-2xl font-bold">회원가입</h1>
+    <div className="mx-auto my-2 flex h-fit w-fit flex-col bg-white p-10">
+      {/* 로고 이미지 추가 */}
+      <img src="/logo.svg" className="mx-auto flex h-10 w-10" />
+      <h1 className="mb-8 mt-2 text-center text-2xl font-bold">회원가입</h1>
 
       <hr />
 

@@ -40,7 +40,9 @@ const LoginPage = () => {
   return (
     <div className="mx-auto my-20 h-fit w-fit bg-white p-10">
       <form>
-        <h1 className="my-6 text-center text-2xl font-bold">팻밀리</h1>
+        {/* 로고 이미지 추가 */}
+        <img src="/logo.svg" className="mx-auto flex h-10 w-10" />
+        <h1 className="mb-6 mt-2 text-center text-2xl font-bold">팻밀리</h1>
 
         <div className="flex flex-col space-y-1">
           <input
