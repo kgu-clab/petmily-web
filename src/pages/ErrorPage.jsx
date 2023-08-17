@@ -15,10 +15,10 @@ const ErrorPage = () => {
             주소가 변경 혹은 삭제되어 요청하신 페이지를 찾을 수 없습니다.
           </span>
         </div>
+
         <button
           className="m-4 h-10 w-24 rounded-lg bg-pm-main text-base text-white hover:bg-blue-700"
           type="button"
-          onClick={navigator}
         >
           메인으로
         </button>
