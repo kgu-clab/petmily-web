@@ -1,8 +1,8 @@
 import axios from 'axios';
+import { API_BASE_URL } from './environment';
 
 const server = axios.create({
-  // baseURL: 'http://49.50.172.64:8080',
-  baseURL: 'http://192.168.0.5:13680',
+  baseURL: API_BASE_URL,
 });
 
 server.interceptors.response.use(
