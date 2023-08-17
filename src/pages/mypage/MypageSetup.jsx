@@ -25,6 +25,10 @@ const MypageSetup = () => {
     alert('수정되었습니다.');
   };
 
+  const onClickLogout = () => {
+    sessionStorage.clear();
+  };
+
   return (
     <div className="m-4 space-y-6">
       <Titlebar title="수정" sub="회원 정보를 수정합니다." />
@@ -90,7 +94,9 @@ const MypageSetup = () => {
       <div className="flex justify-end gap-2">
         <Button color="amber">저장</Button>
 
-        <Button color="red">로그아웃</Button>
+        <Button color="red" onClick={onClickLogout}>
+          로그아웃
+        </Button>
       </div>
     </div>
   );
