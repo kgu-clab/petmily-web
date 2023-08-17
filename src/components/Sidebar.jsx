@@ -172,7 +172,7 @@ const Sidebar = () => {
             가이드
           </ListItem>
 
-          <ListItem>
+          <ListItem onClick={() => handleOpen(0, '/support')}>
             <ListItemPrefix>
               <PeopleTag className="h-5 w-5" />
             </ListItemPrefix>
