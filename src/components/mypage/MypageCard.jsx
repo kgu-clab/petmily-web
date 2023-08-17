@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const MypageCard = ({ className, onClick, icon, label, text }) => {
   return (
     <div
-      className={`flex w-full cursor-pointer justify-between rounded-lg border-2 bg-white p-4 transition ease-in-out hover:shadow-lg ${className}`}
+      className={`flex w-full cursor-pointer justify-between border-x-2 border-b-2 p-4 transition ease-in-out ${className}`}
       onClick={onClick}
     >
       <div className="mr-4 flex items-center justify-center rounded-lg bg-gray-200 p-4">
