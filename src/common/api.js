@@ -44,3 +44,13 @@ export const getMyBoard = async () => {
   const res = await server.get(`/adoption-boards/my-board`);
   return res.data.data;
 };
+
+export const postAdoptionRequestsApprove = async (id) => {
+  const res = await server.post(`/adoption-requests/approve?requestId=${id}`);
+  return res.data.data;
+};
+
+export const getMyRequests = async () => {
+  const res = await server.get(`/adoption-requests/my-request`);
+  return res.data.data;
+};
