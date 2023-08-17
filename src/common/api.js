@@ -59,3 +59,20 @@ export const postContracts = async (payload) => {
   const res = await server.post(`/contracts`, payload);
   return res?.data?.data;
 };
+
+export const postLoginCheck = async (payload) => {
+  const res = await server.post(`/login/role`, {
+    token: payload,
+  });
+  return res?.data?.data;
+};
+
+export const getLogInfo = async () => {
+  const res = await server.get(`/log-info`);
+  return res?.data?.data;
+};
+
+export const getUserList = async () => {
+  const res = await server.get(`/users`);
+  return res?.data?.data;
+};

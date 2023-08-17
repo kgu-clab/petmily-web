@@ -1,198 +1,117 @@
+import { getLogInfo, getUserList, postLoginCheck } from '@common/api';
+import FunctionButton from '@components/ui/FunctionButton';
 import Table from '@components/ui/Table';
+import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { formatUserType } from '@common/utils';
+import dayjs from 'dayjs';
+import { InputAlert } from '@common/alert';
+import server from '@common/server';
 
 const AdminPage = () => {
-  const onClickApprove = () => {
-    alert('승인되었습니다.');
-  };
-  const onClickRefuse = () => {
-    alert('거절되었습니다.');
-  };
-  const onClickSend = () => {
-    prompt('내용을 입력해주세요', '');
+  const token = sessionStorage.getItem('access');
+  const navigate = useNavigate();
+
+  const [uptime, setUptime] = useState(dayjs());
+
+  const logInfo = useQuery('logInfo', getLogInfo, {
+    onSuccess: () => {
+      setUptime(dayjs());
+    },
+  });
+  const userList = useQuery('userList', getUserList);
+
+  const onClickSMS = async (phone) => {
+    const content = await InputAlert({
+      title: '문자 전송',
+      text: '내용을 입력해주세요.',
+    });
+
+    await server.post('/sms/send', {
+      recipientPhoneNumber: phone,
+      content,
+    });
   };
 
+  useEffect(() => {
+    const checkToken = async () => {
+      const result = await postLoginCheck(token);
+      if (!token || !result) {
+        navigate('/');
+      }
+    };
+
+    checkToken();
+  }, [navigate, token]);
+
   return (
-    <div className="m-4 space-y-8">
-      <h1 className="text-3xl font-extrabold">관리자 페이지</h1>
+    <div className="space-y-10">
+      <div>
+        <h1 className="text-3xl font-extrabold">관리자 페이지</h1>
+        <h2 className="text-sm font-semibold text-gray-500">
+          UPTIME: {uptime.format('YY-MM-DD HH:mm:ss')}
+        </h2>
+      </div>
+
+      {/* 회원 로그 관리 */}
+      <div>
+        <h2 className="text-xl font-bold">로그</h2>
+        <span className="text-sm font-light">
+          실시간으로 관리가 필요한 로그에 대해 조회합니다.
+        </span>
+
+        <div className="max-h-96 overflow-auto rounded-lg">
+          <Table
+            className="mt-4 text-center"
+            headers={['위험도', '종류', '분류', '아이디', ' IP', '시간']}
+          >
+            {logInfo.isSuccess &&
+              logInfo?.data?.map((log) => (
+                <tr key={log.createdAt}>
+                  <td className="p-2">{log.danger?.toUpperCase()}</td>
+                  <td>{log.logType}</td>
+                  <td>{formatUserType(log.userType)}</td>
+                  <td>{log.id}</td>
+                  <td>{log.ip}</td>
+                  <td>{dayjs(log.createdAt).format('YY-MM-DD HH:mm:ss')}</td>
+                </tr>
+              ))}
+          </Table>
+        </div>
+      </div>
+
       <div className="space-y-12">
         {/* 회원관리 */}
         <div>
-          <span className="text-lg font-bold">회원 관리</span>
-          <Table
-            className="mt-4 text-center"
-            headers={['아이디', '회원탈퇴', '메일발송', '문자발송']}
-          >
-            <tr>
-              <td>id</td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickApprove}
-                >
-                  승인
-                </button>
-              </td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickSend}
-                >
-                  승인
-                </button>
-              </td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickSend}
-                >
-                  승인
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>id</td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickApprove}
-                >
-                  승인
-                </button>
-              </td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickSend}
-                >
-                  승인
-                </button>
-              </td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickSend}
-                >
-                  승인
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>id</td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickApprove}
-                >
-                  승인
-                </button>
-              </td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickSend}
-                >
-                  승인
-                </button>
-              </td>
-              <td>
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickSend}
-                >
-                  승인
-                </button>
-              </td>
-            </tr>
-          </Table>
-        </div>
+          <h2 className="text-xl font-bold">회원</h2>
+          <span className="text-sm font-light">
+            가입된 개인회원을 조회하고 관리합니다.
+          </span>
 
-        <hr className="h-1 bg-gray-400" />
-
-        {/* 회원 승인 관리 */}
-        <div>
-          <span className="text-lg font-bold">승인 관리</span>
-          <Table
-            className="mt-4 text-center"
-            headers={['아이디', '회원 분류', '승인']}
-          >
-            <tr>
-              <td>id</td>
-              <td>전문 업체</td>
-              <td className="space-x-1">
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickApprove}
-                >
-                  승인
-                </button>
-                <button
-                  className="rounded-md bg-red-400 p-1 text-white hover:bg-red-600"
-                  onClick={onClickRefuse}
-                >
-                  거절
-                </button>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>id</td>
-              <td>보호소</td>
-              <td className="space-x-1">
-                <button
-                  className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
-                  onClick={onClickApprove}
-                >
-                  승인
-                </button>
-                <button
-                  className="rounded-md bg-red-400 p-1 text-white hover:bg-red-600"
-                  onClick={onClickRefuse}
-                >
-                  거절
-                </button>
-              </td>
-            </tr>
-          </Table>
-        </div>
-
-        <hr className="h-1 bg-gray-400" />
-
-        {/* 회원 로그 관리 */}
-        <div>
-          <span className="text-lg font-bold">로그 관리</span>
-          <Table
-            className="mt-4 text-center"
-            headers={['아이디', '회원분류', '로그시간', '접속 ip', '위험도']}
-          >
-            <tr>
-              <td>id</td>
-              <td>전문업체</td>
-              <td>2023-8-16 18:23:04</td>
-              <td>ip</td>
-              <td>높음</td>
-            </tr>
-            <tr>
-              <td>id</td>
-              <td>전문업체</td>
-              <td>2023-8-16 18:23:04</td>
-              <td>ip</td>
-              <td>높음</td>
-            </tr>
-            <tr>
-              <td>id</td>
-              <td>개인</td>
-              <td>2023-8-16 18:23:04</td>
-              <td>ip</td>
-              <td>높음</td>
-            </tr>
-            <tr>
-              <td>id</td>
-              <td>보호소</td>
-              <td>2023-8-16 18:23:04</td>
-              <td>ip</td>
-              <td>높음</td>
-            </tr>
-          </Table>
+          <div className="max-h-96 overflow-auto rounded-lg">
+            <Table
+              className="mt-4 text-center"
+              headers={['아이디', '이름', '이메일', '가입일', '기능']}
+            >
+              {userList.isSuccess &&
+                userList?.data?.map((user) => (
+                  <tr key={user.id}>
+                    <td className="p-2">{user.id}</td>
+                    <td>{user.nickname}</td>
+                    <td>{user.email}</td>
+                    <td>{dayjs(user.createdAt).format('YY-MM-DD')}</td>
+                    <td>
+                      <FunctionButton
+                        className="hover:text-pm-main"
+                        label="문자"
+                        onClick={() => onClickSMS(user.contact)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </Table>
+          </div>
         </div>
       </div>
     </div>
