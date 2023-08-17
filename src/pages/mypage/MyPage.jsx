@@ -6,14 +6,14 @@ import {
 import { Breadcrumbs } from '@material-tailwind/react';
 import { Heart } from 'iconoir-react';
 import { useState } from 'react';
-import MypageStoreInfo from './mypage/MypageStoreInfo';
-import MypageMyPetInfo from './mypage/MypageMyPetInfo';
+import MypageStoreInfo from './MypageStoreInfo';
+import MypageMyPetInfo from './MypageMyPetInfo';
 import MypageCard from '@components/mypage/MypageCard';
 import { useQuery } from 'react-query';
 import { getMyInfo } from '@common/api';
-import MypageSalesInfo from './mypage/MypageSalesInfo';
-import MypageSetup from './mypage/MypageSetup';
-import LoadingPage from './LoadingPage';
+import MypageSalesInfo from './MypageSalesInfo';
+import MypageSetup from './MypageSetup';
+import LoadingPage from '../LoadingPage';
 
 const MyPage = () => {
   const { data, isSuccess, isLoading } = useQuery('myInfo', getMyInfo);
