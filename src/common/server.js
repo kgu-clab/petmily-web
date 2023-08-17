@@ -11,7 +11,6 @@ server.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 403) {
-      sessionStorage.clear();
       window.location.href = '/login';
     }
 
@@ -21,8 +20,7 @@ server.interceptors.response.use(
 
 server.interceptors.request.use(async (config) => {
   try {
-    const token =
-      'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm8iLCJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzIzNzM5MTQ0fQ.6PYR9rLedWnUcja_6n5CYxOU9-P4tDvLT5MjtyDspqA';
+    const token = sessionStorage.getItem('access');
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
