@@ -13,7 +13,7 @@ import GuidePage from '@pages/guide/GuidePage';
 import ShelterSalesPage from '@pages/sales/ShelterSalesPage';
 import PersonalSalesPage from '@pages/sales/PersonalSalesPage';
 import ScrollToTop from '@components/ScrollToTop';
-import SalePage from '@pages/store/SalePage';
+import StorePage from '@pages/store/StorePage';
 import SaleDetail from '@pages/store/SaleDetailPage';
 import SignUpPage from '@pages/auth/SignUpPage';
 import SurveyPage from '@pages/auth/SurveyPage';
@@ -92,12 +92,12 @@ const router = createBrowserRouter([
         element: <GuidePage />,
       },
       {
-        path: '/contract',
+        path: '/contract/:reqId/:boardId',
         element: <ContractPage />,
       },
       {
         path: '/store/used',
-        element: <SalePage />,
+        element: <StorePage />,
       },
       {
         path: '/store/:id',
