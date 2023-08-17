@@ -20,11 +20,10 @@ const AdminPage = () => {
           <span className="text-lg font-bold">회원 관리</span>
           <Table
             className="mt-4 text-center"
-            headers={['아이디', '닉네임', '회원탈퇴', '메일발송', '문자발송']}
+            headers={['아이디', '회원탈퇴', '메일발송', '문자발송']}
           >
             <tr>
               <td>id</td>
-              <td>한관희전문분양</td>
               <td>
                 <button
                   className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
@@ -52,7 +51,6 @@ const AdminPage = () => {
             </tr>
             <tr>
               <td>id</td>
-              <td>한관희전문분양</td>
               <td>
                 <button
                   className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
@@ -80,7 +78,6 @@ const AdminPage = () => {
             </tr>
             <tr>
               <td>id</td>
-              <td>한관희전문분양</td>
               <td>
                 <button
                   className="rounded-md bg-pm-main p-1 text-white hover:bg-blue-700"
@@ -116,11 +113,10 @@ const AdminPage = () => {
           <span className="text-lg font-bold">승인 관리</span>
           <Table
             className="mt-4 text-center"
-            headers={['아이디', '닉네임', '회원 분류', '승인']}
+            headers={['아이디', '회원 분류', '승인']}
           >
             <tr>
               <td>id</td>
-              <td>한관희전문분양</td>
               <td>전문 업체</td>
               <td className="space-x-1">
                 <button
@@ -140,7 +136,6 @@ const AdminPage = () => {
             </tr>
             <tr>
               <td>id</td>
-              <td>김정은보호소</td>
               <td>보호소</td>
               <td className="space-x-1">
                 <button
@@ -167,18 +162,10 @@ const AdminPage = () => {
           <span className="text-lg font-bold">로그 관리</span>
           <Table
             className="mt-4 text-center"
-            headers={[
-              '아이디',
-              '닉네임',
-              '회원분류',
-              '로그시간',
-              '접속 ip',
-              '위험도',
-            ]}
+            headers={['아이디', '회원분류', '로그시간', '접속 ip', '위험도']}
           >
             <tr>
               <td>id</td>
-              <td>한관희전문분양</td>
               <td>전문업체</td>
               <td>2023-8-16 18:23:04</td>
               <td>ip</td>
@@ -186,7 +173,6 @@ const AdminPage = () => {
             </tr>
             <tr>
               <td>id</td>
-              <td>이석현전문분양</td>
               <td>전문업체</td>
               <td>2023-8-16 18:23:04</td>
               <td>ip</td>
@@ -194,7 +180,6 @@ const AdminPage = () => {
             </tr>
             <tr>
               <td>id</td>
-              <td>김관식</td>
               <td>개인</td>
               <td>2023-8-16 18:23:04</td>
               <td>ip</td>
@@ -202,7 +187,6 @@ const AdminPage = () => {
             </tr>
             <tr>
               <td>id</td>
-              <td>김정은보호소</td>
               <td>보호소</td>
               <td>2023-8-16 18:23:04</td>
               <td>ip</td>
