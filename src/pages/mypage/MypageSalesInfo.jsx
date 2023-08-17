@@ -40,7 +40,7 @@ const MypageSalesInfo = () => {
           headers={['품종', '이름', '분양요청인원', '상태', '등록일', '기능']}
         >
           {mySales.isSuccess &&
-            mySales.data.map((animal) => (
+            mySales.data?.map((animal) => (
               <tr key={animal.id} className="hover:bg-gray-100">
                 <td className="p-2">{animal.species}</td>
                 <td>{animal.name}</td>
@@ -68,7 +68,7 @@ const MypageSalesInfo = () => {
 
         <Table className="mt-4" headers={['품종', '분양자', '요청일', '상태']}>
           {myRequests.isSuccess &&
-            myRequests.data.map((request) => (
+            myRequests.data?.map((request) => (
               <tr
                 key={request.animalAdoptionBoard.id}
                 className="hover:bg-gray-100"
