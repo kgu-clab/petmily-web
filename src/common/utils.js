@@ -38,3 +38,26 @@ export const formatRequestType = (value) => {
 
   return typeMap[value] || '';
 };
+
+/**
+ * 주어진 JWT(JSON Web Token)를 해독하여 해당 토큰에 포함된 정보를 추출하는 함수입니다.
+ *
+ * @param {string} token JWT 형식의 인코딩된 토큰 문자열
+ * @returns {Object|null} 토큰에 담긴 정보를 포함하는 객체 또는 토큰이 유효하지 않을 경우 null
+ */
+export const parseJwtPayload = (token) => {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    const decodedPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join(''),
+    );
+
+    return JSON.parse(decodedPayload);
+  } catch (error) {
+    return null;
+  }
+};
