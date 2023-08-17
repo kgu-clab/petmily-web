@@ -14,6 +14,7 @@ import {
 import { SuccessAlert } from '@common/alert';
 import { Button } from '@material-tailwind/react';
 import { formatPhone } from '@common/utils';
+import SurveyPage from './SurveyPage';
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -41,6 +42,8 @@ const SignUpPage = () => {
     },
   });
 
+  const [number, setNumber] = useState(22);
+  const [view, setView] = useState('로그인');
   const [type, setType] = useState('INDIVIDUAL');
   const [verifyState, setVerifyState] = useState('NONE');
   const [fromData, setFromData] = useState({
@@ -51,6 +54,7 @@ const SignUpPage = () => {
     contact: '',
     businessNumber: '',
     verificationCode: '',
+    point: number,
   });
 
   const onClickSignUp = () => {
@@ -101,212 +105,218 @@ const SignUpPage = () => {
     }));
   };
 
-  return (
-    <div className="mx-auto my-2 flex h-fit w-fit flex-col bg-white p-10">
-      {/* 로고 이미지 추가 */}
-      <img src="/logo.svg" className="mx-auto flex h-10 w-10" />
-      <h1 className="mb-8 mt-2 text-center text-2xl font-bold">회원가입</h1>
+  if (view === '설문') {
+    return <SurveyPage setView={setView} setter={setNumber} />;
+  }
 
-      <hr />
+  if (view === '로그인')
+    return (
+      <div className="mx-auto my-2 flex h-fit w-fit flex-col bg-white p-10">
+        {/* 로고 이미지 추가 */}
+        <img src="/logo.svg" className="mx-auto flex h-10 w-10" />
+        <h1 className="mb-8 mt-2 text-center text-2xl font-bold">회원가입</h1>
 
-      <form className="my-10 flex flex-col space-y-5">
-        {/* 회원분류선택 */}
-        <div className="mx-auto my-4 flex items-center space-x-8">
-          {/* 개인회원 */}
-          <div
-            className={`h-24 w-24 cursor-pointer rounded-lg border p-2 ${
-              type === 'INDIVIDUAL' ? 'border-pm-main' : ''
-            }`}
-            onClick={() => setType('INDIVIDUAL')}
-          >
-            <div className="flex flex-col items-center">
-              <UserIcon alt="user" className="mb-2 h-12 w-12" />
-              <span className="text-sm font-bold">개인 회원</span>
+        <hr />
+
+        <form className="my-10 flex flex-col space-y-5">
+          {/* 회원분류선택 */}
+          <div className="mx-auto my-4 flex items-center space-x-8">
+            {/* 개인회원 */}
+            <div
+              className={`h-24 w-24 cursor-pointer rounded-lg border p-2 ${
+                type === 'INDIVIDUAL' ? 'border-pm-main' : ''
+              }`}
+              onClick={() => setType('INDIVIDUAL')}
+            >
+              <div className="flex flex-col items-center">
+                <UserIcon alt="user" className="mb-2 h-12 w-12" />
+                <span className="text-sm font-bold">개인 회원</span>
+              </div>
+            </div>
+
+            {/* 전문업체 */}
+            <div
+              className={`h-24 w-24 cursor-pointer rounded-lg border p-2 ${
+                type === 'PROFESSIONAL' ? 'border-pm-main' : ''
+              }`}
+              onClick={() => setType('PROFESSIONAL')}
+            >
+              <div className="flex flex-col items-center">
+                <BuildingOffice2Icon alt="company" className="mb-2 h-12 w-12" />
+                <span className="text-sm font-bold">전문업체</span>
+              </div>
+            </div>
+
+            {/* 보호소 */}
+            <div
+              className={`h-24 w-24 cursor-pointer rounded-lg border p-2 ${
+                type === 'SHELTER' ? 'border-pm-main' : ''
+              }`}
+              onClick={() => setType('SHELTER')}
+            >
+              <div className="flex flex-col items-center">
+                <HomeModernIcon alt="shelter" className="mb-2 h-12 w-12" />
+                <span className="text-sm font-bold">보호소</span>
+              </div>
             </div>
           </div>
 
-          {/* 전문업체 */}
-          <div
-            className={`h-24 w-24 cursor-pointer rounded-lg border p-2 ${
-              type === 'PROFESSIONAL' ? 'border-pm-main' : ''
-            }`}
-            onClick={() => setType('PROFESSIONAL')}
-          >
-            <div className="flex flex-col items-center">
-              <BuildingOffice2Icon alt="company" className="mb-2 h-12 w-12" />
-              <span className="text-sm font-bold">전문업체</span>
-            </div>
-          </div>
-
-          {/* 보호소 */}
-          <div
-            className={`h-24 w-24 cursor-pointer rounded-lg border p-2 ${
-              type === 'SHELTER' ? 'border-pm-main' : ''
-            }`}
-            onClick={() => setType('SHELTER')}
-          >
-            <div className="flex flex-col items-center">
-              <HomeModernIcon alt="shelter" className="mb-2 h-12 w-12" />
-              <span className="text-sm font-bold">보호소</span>
-            </div>
-          </div>
-        </div>
-
-        {/* 아이디 입력 */}
-        <div className="flex flex-row items-center">
-          <div className="mr-3 w-20 text-sm font-bold">아이디</div>
-          <input
-            className="flex-grow rounded-lg border p-3"
-            type="text"
-            id="id"
-            name="id"
-            value={fromData.id}
-            onChange={onChange}
-            placeholder="아이디를 입력해주세요."
-          />
-        </div>
-
-        {/* 비밀번호 입력 */}
-        <div className="flex flex-row items-center">
-          <div className="mr-3 w-20 text-sm font-bold">비밀번호</div>
-          <input
-            className="flex-grow rounded-lg border p-3"
-            type="password"
-            id="password"
-            name="password"
-            value={FormData.password}
-            onChange={onChange}
-            placeholder="비밀번호를 입력해주세요."
-          />
-        </div>
-
-        {/* 비밀번호 확인 */}
-        <div className="flex flex-row items-center">
-          <div className="mr-3 w-20 text-sm font-bold">비밀번호 확인</div>
-          <input
-            className="flex-grow rounded-lg border p-3"
-            type="password"
-            id="passwordCheck"
-            name="passwordConfirm"
-            placeholder="비밀번호를 확인해주세요."
-          />
-        </div>
-
-        {/* 전문업체 선택 시 등록번호 입력 */}
-        {type === 'PROFESSIONAL' && (
-          <div className="flex flex-col space-y-3">
-            <div className="flex flex-row items-center">
-              <div className="mr-3 w-20 text-sm font-bold">등록번호</div>
-              <input
-                className="flex-grow rounded-lg border p-3"
-                type="text"
-                id="businessNumber"
-                name="businessNumber"
-                value={FormData.businessNumber}
-                onChange={onChange}
-                placeholder="업체등록번호를 입력해주세요."
-              />
-            </div>
-          </div>
-        )}
-
-        {/* 전문업체나 보호소 선택 시 소재지 입력 */}
-        {(type === 'PROFESSIONAL' || type === 'SHELTER') && (
-          <div className="flex flex-col space-y-3">
-            <div className="flex flex-row items-center">
-              <div className="mr-3 w-20 text-sm font-bold">소재지</div>
-              <input
-                className="flex-grow rounded-lg border p-3"
-                type="text"
-                id="address"
-                name="address"
-                value={fromData.address}
-                onChange={onChange}
-                placeholder="소재지를 입력해주세요."
-              />
-            </div>
-          </div>
-        )}
-
-        {/* 이름 입력 */}
-        <div className="flex flex-row items-center">
-          <div className="mr-3 w-20 text-sm font-bold">이름</div>
-          <input
-            className="flex-grow rounded-lg border p-3"
-            type="text"
-            id="nickname"
-            name="nickname"
-            value={fromData.nickname}
-            onChange={onChange}
-            placeholder="이름을 입력해주세요."
-          />
-        </div>
-
-        {/* 전화번호 입력 */}
-        <div className="flex flex-row items-center">
-          <div className="mr-3 w-20 text-sm font-bold">전화번호</div>
-
-          <div className="flex flex-grow gap-2">
-            <input
-              className="w-52 rounded-lg border p-3"
-              type="text"
-              id="contact"
-              name="contact"
-              value={fromData.contact}
-              onChange={onChangeContact}
-              placeholder="전화번호를 입력해주세요."
-            />
-
-            <Button onClick={onClickSendContact}>인증번호 전송</Button>
-          </div>
-        </div>
-
-        {/* 인증번호 입력 */}
-        {verifyState === 'SEND' && (
+          {/* 아이디 입력 */}
           <div className="flex flex-row items-center">
-            <div className="mr-3 w-20 text-sm font-bold">인증번호</div>
+            <div className="mr-3 w-20 text-sm font-bold">아이디</div>
+            <input
+              className="flex-grow rounded-lg border p-3"
+              type="text"
+              id="id"
+              name="id"
+              value={fromData.id}
+              onChange={onChange}
+              placeholder="아이디를 입력해주세요."
+            />
+          </div>
+
+          {/* 비밀번호 입력 */}
+          <div className="flex flex-row items-center">
+            <div className="mr-3 w-20 text-sm font-bold">비밀번호</div>
+            <input
+              className="flex-grow rounded-lg border p-3"
+              type="password"
+              id="password"
+              name="password"
+              value={FormData.password}
+              onChange={onChange}
+              placeholder="비밀번호를 입력해주세요."
+            />
+          </div>
+
+          {/* 비밀번호 확인 */}
+          <div className="flex flex-row items-center">
+            <div className="mr-3 w-20 text-sm font-bold">비밀번호 확인</div>
+            <input
+              className="flex-grow rounded-lg border p-3"
+              type="password"
+              id="passwordCheck"
+              name="passwordConfirm"
+              placeholder="비밀번호를 확인해주세요."
+            />
+          </div>
+
+          {/* 전문업체 선택 시 등록번호 입력 */}
+          {type === 'PROFESSIONAL' && (
+            <div className="flex flex-col space-y-3">
+              <div className="flex flex-row items-center">
+                <div className="mr-3 w-20 text-sm font-bold">등록번호</div>
+                <input
+                  className="flex-grow rounded-lg border p-3"
+                  type="text"
+                  id="businessNumber"
+                  name="businessNumber"
+                  value={FormData.businessNumber}
+                  onChange={onChange}
+                  placeholder="업체등록번호를 입력해주세요."
+                />
+              </div>
+            </div>
+          )}
+
+          {/* 전문업체나 보호소 선택 시 소재지 입력 */}
+          {(type === 'PROFESSIONAL' || type === 'SHELTER') && (
+            <div className="flex flex-col space-y-3">
+              <div className="flex flex-row items-center">
+                <div className="mr-3 w-20 text-sm font-bold">소재지</div>
+                <input
+                  className="flex-grow rounded-lg border p-3"
+                  type="text"
+                  id="address"
+                  name="address"
+                  value={fromData.address}
+                  onChange={onChange}
+                  placeholder="소재지를 입력해주세요."
+                />
+              </div>
+            </div>
+          )}
+
+          {/* 이름 입력 */}
+          <div className="flex flex-row items-center">
+            <div className="mr-3 w-20 text-sm font-bold">이름</div>
+            <input
+              className="flex-grow rounded-lg border p-3"
+              type="text"
+              id="nickname"
+              name="nickname"
+              value={fromData.nickname}
+              onChange={onChange}
+              placeholder="이름을 입력해주세요."
+            />
+          </div>
+
+          {/* 전화번호 입력 */}
+          <div className="flex flex-row items-center">
+            <div className="mr-3 w-20 text-sm font-bold">전화번호</div>
 
             <div className="flex flex-grow gap-2">
               <input
-                className="flex-grow rounded-lg border p-3"
+                className="w-52 rounded-lg border p-3"
                 type="text"
-                id="verificationCode"
-                name="verificationCode"
-                placeholder="인증번호를 입력해주세요."
-                onChange={onChange}
+                id="contact"
+                name="contact"
+                value={fromData.contact}
+                onChange={onChangeContact}
+                placeholder="전화번호를 입력해주세요."
               />
 
-              <Button onClick={onClickVerifyContact}>확인</Button>
+              <Button onClick={onClickSendContact}>인증번호 전송</Button>
             </div>
           </div>
+
+          {/* 인증번호 입력 */}
+          {verifyState === 'SEND' && (
+            <div className="flex flex-row items-center">
+              <div className="mr-3 w-20 text-sm font-bold">인증번호</div>
+
+              <div className="flex flex-grow gap-2">
+                <input
+                  className="flex-grow rounded-lg border p-3"
+                  type="text"
+                  id="verificationCode"
+                  name="verificationCode"
+                  placeholder="인증번호를 입력해주세요."
+                  onChange={onChange}
+                />
+
+                <Button onClick={onClickVerifyContact}>확인</Button>
+              </div>
+            </div>
+          )}
+        </form>
+
+        {type === 'INDIVIDUAL' && (
+          <button
+            className="mb-12 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
+            type="button"
+            onClick={() => setView('설문')}
+          >
+            설문 조사하기
+          </button>
         )}
-      </form>
 
-      {type === 'INDIVIDUAL' && (
-        <button
-          className="mb-12 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
-          type="button"
-        >
-          설문 조사하기
-        </button>
-      )}
+        <hr />
 
-      <hr />
-
-      {/* 이용약관 */}
-      <div className="my-10 flex flex-row items-start">
-        <div className="mr-3 w-20 text-sm font-bold">
-          이용약관 동의
-          <br />
-          (필수)
-        </div>
-        <div className="h-36 flex-grow overflow-auto rounded-lg border p-3">
-          <textarea
-            className="h-full w-full resize-none border-none text-xs focus:outline-none"
-            id="terms"
-            name="terms"
-            readOnly={true}
-            placeholder="제1조(목적)
+        {/* 이용약관 */}
+        <div className="my-10 flex flex-row items-start">
+          <div className="mr-3 w-20 text-sm font-bold">
+            이용약관 동의
+            <br />
+            (필수)
+          </div>
+          <div className="h-36 flex-grow overflow-auto rounded-lg border p-3">
+            <textarea
+              className="h-full w-full resize-none border-none text-xs focus:outline-none"
+              id="terms"
+              name="terms"
+              readOnly={true}
+              placeholder="제1조(목적)
              이 약관은 팻밀리(전자상거래 사업자)가 운영하는 팻밀리 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리?의무 및 책임사항을 규정함을 목적으로 합니다.
              ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
              제2조(정의)
@@ -444,25 +454,25 @@ const SignUpPage = () => {
              ① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
              ② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
              부 칙(시행일) 이 약관은 xxxx년 xx월 xx일부터 시행합니다. 부 칙(시행일) 이 약관은 xxxx년 xx월 xx일부터 시행합니다."
-          />
-        </div>
-      </div>
-
-      {/* 이용약관 */}
-      <div className="my-10 flex flex-row items-start">
-        <div className="mr-3 w-20 text-sm font-bold">
-          개인정보 수집 및 이용 동의
-          <br />
-          (필수)
+            />
+          </div>
         </div>
 
-        <div className="h-36 flex-grow overflow-auto rounded-lg border p-3">
-          <textarea
-            className="h-full w-full resize-none border-none text-xs focus:outline-none"
-            id="terms"
-            name="terms"
-            readOnly={true}
-            placeholder="1. 개인정보 수집목적 및 이용목적
+        {/* 이용약관 */}
+        <div className="my-10 flex flex-row items-start">
+          <div className="mr-3 w-20 text-sm font-bold">
+            개인정보 수집 및 이용 동의
+            <br />
+            (필수)
+          </div>
+
+          <div className="h-36 flex-grow overflow-auto rounded-lg border p-3">
+            <textarea
+              className="h-full w-full resize-none border-none text-xs focus:outline-none"
+              id="terms"
+              name="terms"
+              readOnly={true}
+              placeholder="1. 개인정보 수집목적 및 이용목적
              가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
              콘텐츠 제공 , 구매 및 요금 결제 , 물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융 서비스
              나. 회원 관리
@@ -486,33 +496,33 @@ const SignUpPage = () => {
              -보존이유: 통신비밀보호법
              -보존기간 : 3개월
              ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다."
-          />
+            />
+          </div>
         </div>
-      </div>
 
-      {/* 이용약관 동의 */}
-      <div className="flex items-center ">
-        <input
-          type="checkbox"
-          className="mr-2 h-5 w-5 rounded border-gray-300 focus:border-pm-main focus:ring-pm-main"
-          id="agreeToTerms"
-        />
-        <label
-          htmlFor="agreeToTerms"
-          className="text-sm font-normal text-gray-800"
+        {/* 이용약관 동의 */}
+        <div className="flex items-center ">
+          <input
+            type="checkbox"
+            className="mr-2 h-5 w-5 rounded border-gray-300 focus:border-pm-main focus:ring-pm-main"
+            id="agreeToTerms"
+          />
+          <label
+            htmlFor="agreeToTerms"
+            className="text-sm font-normal text-gray-800"
+          >
+            이용약관에 전체동의합니다
+          </label>
+        </div>
+        <button
+          className="mt-8 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
+          type="button"
+          onClick={onClickSignUp}
         >
-          이용약관에 전체동의합니다
-        </label>
+          가입하기
+        </button>
       </div>
-      <button
-        className="mt-8 rounded-md bg-pm-main p-3 text-white hover:bg-blue-700"
-        type="button"
-        onClick={onClickSignUp}
-      >
-        가입하기
-      </button>
-    </div>
-  );
+    );
 };
 
 export default SignUpPage;

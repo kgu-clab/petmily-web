@@ -19,6 +19,7 @@ import SalesSelectPage from '@pages/sales/SalesSelectPage';
 import SalesPage from '@pages/sales/SalesPage';
 import SupportPage from '@pages/support/SupportPage';
 import AdminPage from '@pages/AdminPage';
+import SatisfactionPage from '@pages/SatisfactionPage';
 
 const Section = () => {
   return (
@@ -98,6 +99,11 @@ const router = createBrowserRouter([
         path: '/support',
         element: <SupportPage />,
       },
+      {
+        path: '/satisfaction',
+        element: <SatisfactionPage />,
+      },
+
       {
         path: '/admin',
         element: <AdminPage />,
