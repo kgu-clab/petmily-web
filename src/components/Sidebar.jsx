@@ -14,6 +14,7 @@ import {
   ExclamationTriangleIcon,
   UserCircleIcon,
   ArrowRightOnRectangleIcon,
+  DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
@@ -156,6 +157,13 @@ const Sidebar = () => {
           </Accordion>
 
           <hr className="my-2 border-blue-gray-50" />
+
+          <ListItem onClick={() => handleOpen(0, '/animal/registration')}>
+            <ListItemPrefix>
+              <DocumentTextIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            분양 등록
+          </ListItem>
 
           <ListItem onClick={() => handleOpen(0, '/guide')}>
             <ListItemPrefix>
