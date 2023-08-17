@@ -105,6 +105,7 @@ const AnimalRegistrationPage = () => {
   const navigate = useNavigate();
 
   const { data, isSuccess, isLoading } = useQuery('myInfo', getMyInfo);
+
   const registrationMutate = useMutation(postAdoptionBoard, {
     onSuccess: (data) => {
       if (data.success) {
@@ -146,7 +147,7 @@ const AnimalRegistrationPage = () => {
     const formData = new FormData();
     uploads.forEach((image) => formData.append('files', image));
 
-    const res = await server.post(`/files/animals/${data.nickname}`, formData);
+    const res = await server.post(`/files/animals/${data?.nickname}`, formData);
 
     if (res.data.success) {
       registrationMutate.mutate({
@@ -211,7 +212,7 @@ const AnimalRegistrationPage = () => {
     return <LoadingPage />;
   }
 
-  if (isSuccess)
+  if (isSuccess) {
     return (
       <div>
         <div className="grid grid-cols-2 gap-4">
@@ -255,22 +256,22 @@ const AnimalRegistrationPage = () => {
             <div className="flex grow flex-col gap-4">
               <div className="w-full grow rounded-lg bg-white p-4">
                 <div className="flex justify-between">
-                  <h1 className="text-xl font-bold">{data.nickname}</h1>
+                  <h1 className="text-xl font-bold">{data?.nickname}</h1>
                 </div>
 
                 <ul className="mt-4 leading-loose">
-                  <li>분류: {formatUserType(data.type)}</li>
+                  <li>분류: {formatUserType(data?.type)}</li>
                   <li>
                     동물판매업번호:
-                    {data.businessNumber}
+                    {data?.businessNumber}
                   </li>
                   <li>
                     연락처:
-                    {formatPhone(data.contact)}
+                    {formatPhone(data?.contact)}
                   </li>
                   <li>
                     위치:
-                    {data.address}
+                    {data?.address}
                   </li>
                   <li>
                     카카오 문의:
@@ -510,6 +511,7 @@ const AnimalRegistrationPage = () => {
         </div>
       </div>
     );
+  }
 };
 
 AnimalRegistrationPage.propTypes = {};

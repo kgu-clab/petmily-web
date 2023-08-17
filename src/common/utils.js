@@ -16,7 +16,7 @@ export const formatCurrency = (value) => {
  */
 export const formatPhone = (value) =>
   value
-    .replace(/[^0-9]/g, '')
+    ?.replace(/[^0-9]/g, '')
     .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
 
 export const formatUserType = (value) => {
@@ -26,7 +26,7 @@ export const formatUserType = (value) => {
     SHELTER: '보호소',
   };
 
-  return typeMap[value] || '';
+  return typeMap[value?.toUpperCase()] || '';
 };
 
 export const formatRequestType = (value) => {
