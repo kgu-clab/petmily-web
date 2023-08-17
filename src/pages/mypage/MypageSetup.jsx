@@ -9,7 +9,7 @@ export function SwitchDefault() {
 
 const MypageSetup = () => {
   const [fromData, setFromData] = useState({
-    id: '',
+    place: '',
     email: '',
     number: '',
   });
@@ -30,21 +30,6 @@ const MypageSetup = () => {
       <Titlebar title="수정" sub="회원 정보를 수정합니다." />
       <hr />
       <div className="space-y-4 ">
-        <div className="flex ">
-          <p className="w-16">이름</p>
-          <input
-            className="rounded-lg border p-1 font-normal "
-            type="text"
-            id="id"
-            name="id"
-            value={fromData.id}
-            onChange={onChange}
-            placeholder="아이디 변경"
-          />{' '}
-          <Button className="color-pm-main" onClick={onClick}>
-            확인
-          </Button>
-        </div>
         <div className="flex">
           <p className="w-16">이메일</p>
           <input
@@ -70,6 +55,21 @@ const MypageSetup = () => {
             value={fromData.number}
             onChange={onChange}
             placeholder="전화번호 변경"
+          />{' '}
+          <Button className="color-pm-main" onClick={onClick}>
+            확인
+          </Button>
+        </div>
+        <div className="flex ">
+          <p className="w-16">위치</p>
+          <input
+            className="rounded-lg border p-1 font-normal "
+            type="text"
+            id="id"
+            name="id"
+            value={fromData.id}
+            onChange={onChange}
+            placeholder="위치 변경"
           />{' '}
           <Button className="color-pm-main" onClick={onClick}>
             확인
