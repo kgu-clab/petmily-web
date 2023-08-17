@@ -39,3 +39,8 @@ export const getAdoptionBoardsInfo = async (id) => {
   const res = await server.get(`/adoption-boards/info?boardId=${id}`);
   return res.data.data;
 };
+
+export const getMyBoard = async () => {
+  const res = await server.get(`/adoption-boards/my-board`);
+  return res.data.data;
+};
