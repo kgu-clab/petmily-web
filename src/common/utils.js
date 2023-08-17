@@ -18,3 +18,23 @@ export const formatPhone = (value) =>
   value
     .replace(/[^0-9]/g, '')
     .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+
+export const formatUserType = (value) => {
+  const typeMap = {
+    INDIVIDUAL: '개인',
+    PROFESSIONAL: '전문업체',
+    SHELTER: '보호소',
+  };
+
+  return typeMap[value] || '';
+};
+
+export const formatRequestType = (value) => {
+  const typeMap = {
+    WAIT: '대기',
+    CANCEL: '거절',
+    APPROVE: '승인',
+  };
+
+  return typeMap[value] || '';
+};

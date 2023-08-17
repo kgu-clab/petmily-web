@@ -28,7 +28,7 @@ import {
 import AnimalSection from '@components/animal/AnimalSection';
 import { useMutation, useQuery } from 'react-query';
 import { getMyInfo, postAdoptionBoard } from '@common/api';
-import { formatPhone } from '@common/utils';
+import { formatPhone, formatUserType } from '@common/utils';
 import { useRef, useState } from 'react';
 import { SuccessAlert } from '@common/alert';
 import { useNavigate } from 'react-router-dom';
@@ -208,7 +208,7 @@ const AnimalRegistrationPage = () => {
 
   if (isSuccess)
     return (
-      <>
+      <div>
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-2 flex gap-4">
             <div className="flex h-96 basis-8/12 items-center justify-center rounded-lg bg-white hover:bg-white/60">
@@ -254,7 +254,7 @@ const AnimalRegistrationPage = () => {
                 </div>
 
                 <ul className="mt-4 leading-loose">
-                  <li>분류: {data.type}</li>
+                  <li>분류: {formatUserType(data.type)}</li>
                   <li>
                     동물판매업번호:
                     {data.businessNumber}
@@ -497,14 +497,13 @@ const AnimalRegistrationPage = () => {
             />
           </div>
         </div>
-
         <div className="mt-4 flex justify-end gap-4">
           <Button color="red">취소</Button>
           <Button color="blue" onClick={onClickAdd}>
             등록
           </Button>
         </div>
-      </>
+      </div>
     );
 };
 

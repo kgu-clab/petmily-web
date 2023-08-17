@@ -1,34 +1,34 @@
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Sidebar from '@components/Sidebar';
 import HomePage from '@pages/HomePage';
-import ProfessionalSalesPage from '@pages/ProfessionalSalesPage';
+import ProfessionalSalesPage from '@pages/sales/ProfessionalSalesPage';
 import Footer from '@components/Footer';
-import AnimalPage from '@pages/AnimalPage';
-import AnimalListPage from '@pages/AnimalListPage';
-import LoginPage from '@pages/LoginPage';
-import AnimalRegistrationPage from '@pages/AnimalRegistrationPage';
-import MyPage from '@pages/MyPage';
-import ContractPage from '@pages/ContractPage';
-import GuidePage from '@pages/GuidePage';
-import ShelterSalesPage from '@pages/ShelterSalesPage';
-import PersonalSalesPage from '@pages/PersonalSalesPage';
+import AnimalPage from '@pages/animal/AnimalPage';
+import AnimalListPage from '@pages/sales/AnimalListPage';
+import LoginPage from '@pages/auth/LoginPage';
+import AnimalRegistrationPage from '@pages/sales/AnimalRegistrationPage';
+import MyPage from '@pages/mypage/MyPage';
+import ContractPage from '@pages/contract/ContractPage';
+import GuidePage from '@pages/guide/GuidePage';
+import ShelterSalesPage from '@pages/sales/ShelterSalesPage';
+import PersonalSalesPage from '@pages/sales/PersonalSalesPage';
 import ScrollToTop from '@components/ScrollToTop';
-import SalePage from '@pages/SalePage';
-import SaleDetail from '@pages/SaleDetailPage';
-import SignUpPage from '@pages/SignUpPage';
-import SurveyPage from '@pages/SurveyPage';
+import SalePage from '@pages/store/SalePage';
+import SaleDetail from '@pages/store/SaleDetailPage';
+import SignUpPage from '@pages/auth/SignUpPage';
+import SurveyPage from '@pages/auth/SurveyPage';
 import ErrorPage from '@pages/ErrorPage';
+import AnimalSalePage from '@pages/sales/AnimalSalePage';
 
 const Section = () => {
   return (
     <section>
-      <ScrollToTop />
       <Sidebar />
 
-      <div className="ml-[18rem] grow p-5">
+      <ScrollToTop>
         <Outlet />
         <Footer />
-      </div>
+      </ScrollToTop>
     </section>
   );
 };
@@ -58,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: '/animal/:id',
         element: <AnimalPage />,
+      },
+      {
+        path: '/animal/sale/:id',
+        element: <AnimalSalePage />,
       },
       {
         path: '/animal/registration',
