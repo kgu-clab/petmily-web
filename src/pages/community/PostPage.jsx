@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { Textarea, Button } from '@material-tailwind/react';
 import { useState } from 'react';
+import Image from '@assets/guideImage.webp';
+import Image2 from '@assets/guideImage2.webp';
 
 const CommentBoxTextarea = ({ onCommentSubmit }) => {
   const [comment, setComment] = useState('');
@@ -78,23 +80,31 @@ const PostPage = () => {
               <span className="px-2">조회 수 : {click}</span>
             </div>
             <hr />
-            <div className="mt-4 h-auto w-full overflow-auto bg-white p-4">
-              <p className="p-4">
-                <div className="space-y-2 p-4">
-                  <span>
+            <div className="mt-4 h-auto w-full overflow-auto bg-white p-5">
+              <p className="p-4 ">
+                <div className="space-y-3 p-4">
+                  <span className="space-y-2">
                     동물 등록을 통해 반려동물을 잃어버렸을 때
                     국가동물보호정보시스템 상 동물등록정보를 통해 소유자를 찾을
-                    수 있습니다. 현재 전국 의무 시행 중으로 등록대상은
-                    주택·준주택에서 기르거나 주택 외의 장소에서 반려 목적으로
-                    기르는 2개월 령 이상의 개입니다. (고양이는 현재 의무가 아닌
-                    선택사항으로 시범사업 진행) 하지만 도서 또는 동물등록업무를
-                    대행하게 할 수 있는 자가 없는 읍·면 중 시·도 조례로 정하는
-                    지역에서는 소유자의 선택에 따라 등록하지 않을 수 있습니다.
-                    (등록대상동물이 맹견이라면 동물등록 필수) 최초 등록시에는
-                    동물에게 무선식별장치를 장착하기 위해 반드시 등록대상동물을
-                    동반하여 방문신청해야 합니다
-                  </span>{' '}
+                    수 있습니다.
+                  </span>
+                  <span className="font-bold text-red-400 underline underline-offset-1">
+                    전국 의무 시행
+                  </span>
+                  <span>
+                    중으로 등록대상은 주택·준주택에서 기르거나 주택 외의
+                    장소에서 반려 목적으로 기르는 2개월 령 이상의 개입니다.
+                    (고양이는 현재 의무가 아닌 선택사항으로 시범사업 진행)
+                    하지만 도서 또는 동물등록업무를 대행하게 할 수 있는 자가
+                    없는 읍·면 중 시·도 조례로 정하는 지역에서는 소유자의 선택에
+                    따라 등록하지 않을 수 있습니다. (등록대상동물이 맹견이라면
+                    동물등록 필수) 최초 등록시에는 동물에게 무선식별장치를
+                    장착하기 위해 반드시 등록대상동물을 동반하여 방문신청해야
+                    합니다
+                  </span>
                   <br />
+                  <br />
+                  <img src={Image} className="h-full w-full" />
                   <br /> <span className="text-lg font-bold">동물등록방법</span>
                   <br />
                   <span>
@@ -152,6 +162,9 @@ const PostPage = () => {
                     이전받은 날부터 30일 이내로 시군구에 변경신고를 하지
                     않는다면 최대 40만원 이하의 과태료가 부과됩니다.
                   </span>
+                  <br />
+                  <br />
+                  <img src={Image2} className="h-full w-full" />
                 </div>
               </p>
             </div>
