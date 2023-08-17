@@ -54,3 +54,8 @@ export const getMyRequests = async () => {
   const res = await server.get(`/adoption-requests/my-request`);
   return res.data.data;
 };
+
+export const postContracts = async (payload) => {
+  const res = await server.post(`/contracts`, payload);
+  return res.data.data;
+};

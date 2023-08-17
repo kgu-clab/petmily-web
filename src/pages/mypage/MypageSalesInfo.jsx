@@ -8,15 +8,20 @@ const MypageSalesInfo = () => {
   const mySales = useQuery('mySales', getMyBoard);
   const myRequests = useQuery('myRequest', getMyRequests);
 
-  const stateButton = (state) => {
+  const stateButton = (state, contract, reqId, boardId) => {
     const typeMap = {
-      WAIT: <button className="text-yellow-400">대기</button>,
+      WAIT: <button className="text-amber-500">대기</button>,
       CANCEL: <button className="text-pm-red">거절</button>,
-      APPROVE: (
-        <Link to={'/contract'} className="text-pm-main">
-          승인 (계약서 작성)
-        </Link>
-      ),
+      APPROVE:
+        contract === null ? (
+          <Link to={`/contract/${reqId}/${boardId}`} className="text-pm-main">
+            계약서 작성
+          </Link>
+        ) : (
+          <Link to={`/contract/${reqId}/${boardId}`} className="text-pm-main">
+            계약서 보기
+          </Link>
+        ),
     }[state];
 
     return typeMap;
@@ -39,7 +44,7 @@ const MypageSalesInfo = () => {
               <tr key={animal.id} className="hover:bg-gray-100">
                 <td className="p-2">{animal.species}</td>
                 <td>{animal.name}</td>
-                <td>{animal.requestUser.length}</td>
+                <td>{animal.adoptionRequests.length}</td>
                 <td>{animal.animalState}</td>
                 <td>{animal.createdAt}</td>
                 <td>
@@ -81,7 +86,14 @@ const MypageSalesInfo = () => {
                 </td>
                 <td>{request.animalAdoptionBoard.writer.nickname} </td>
                 <td>{request.animalAdoptionBoard.createdAt} </td>
-                <td>{stateButton(request.requestState)}</td>
+                <td>
+                  {stateButton(
+                    request.requestState,
+                    request.contracts,
+                    request.id,
+                    request.animalAdoptionBoard.id,
+                  )}
+                </td>
               </tr>
             ))}
         </Table>

@@ -79,17 +79,19 @@ const AnimalSalePage = () => {
           className="mt-4 text-center"
           headers={['이름', '거주지', '이메일', '구분', '적합도 점수', '기능']}
         >
-          {data.requestUser.map((user) => (
-            <tr key={user.seq}>
-              <td className="p-2">{user.nickname}</td>
-              <td className="p-2">{user.address}</td>
-              <td className="p-2">{user.email}</td>
-              <td className="p-2">{formatUserType(user.type)}</td>
+          {data.adoptionRequests.map((request) => (
+            <tr key={request.user.seq}>
+              <td className="p-2">{request.user.nickname}</td>
+              <td className="p-2">{request.user.address}</td>
+              <td className="p-2">{request.user.email}</td>
+              <td className="p-2">{formatUserType(request.user.type)}</td>
               <td className="p-2">{0}</td>
               <td>
                 <button
                   className="text-xs hover:underline"
-                  onClick={() => onClickSelect(user.nickname, user.seq)}
+                  onClick={() =>
+                    onClickSelect(request.user.nickname, request.id)
+                  }
                 >
                   선택
                 </button>
