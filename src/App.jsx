@@ -3,9 +3,9 @@ import Sidebar from '@components/Sidebar';
 import HomePage from '@pages/HomePage';
 import Footer from '@components/Footer';
 import AnimalPage from '@pages/animal/AnimalPage';
-import AnimalListPage from '@pages/sales/AnimalListPage';
+import SalesListPage from '@pages/sales/SalesListPage';
 import LoginPage from '@pages/auth/LoginPage';
-import AnimalRegistrationPage from '@pages/sales/AnimalRegistrationPage';
+import AnimalRegistrationPage from '@pages/animal/AnimalRegistrationPage';
 import MyPage from '@pages/mypage/MyPage';
 import ContractPage from '@pages/contract/ContractPage';
 import GuidePage from '@pages/guide/GuidePage';
@@ -15,9 +15,9 @@ import SaleDetail from '@pages/store/SaleDetailPage';
 import SignUpPage from '@pages/auth/SignUpPage';
 import SurveyPage from '@pages/auth/SurveyPage';
 import ErrorPage from '@pages/ErrorPage';
-import AnimalSalePage from '@pages/sales/AnimalSalePage';
+import SalesSelectPage from '@pages/sales/SalesSelectPage';
 import SalesPage from '@pages/sales/SalesPage';
-import SupportPage from '@pages/SupportPage';
+import SupportPage from '@pages/support/SupportPage';
 
 const Section = () => {
   return (
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/animal/sale/:id',
-        element: <AnimalSalePage />,
+        element: <SalesSelectPage />,
       },
       {
         path: '/registration',
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/list',
-        element: <AnimalListPage />,
+        element: <SalesListPage />,
       },
       {
         path: '/login',

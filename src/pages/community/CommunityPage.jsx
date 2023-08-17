@@ -1,60 +1,6 @@
 import ThemeCard from '@components/ui/ThemeCard';
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 
-const popularPostInfomation = [
-  {
-    sort: '잡담',
-    title: '강아지가 산책을 너무 좋아해요',
-    date: '2023/5/6',
-    click: '21',
-  },
-  {
-    sort: '질문',
-    title: '츄르 많이줘도 될까요',
-    date: '2023/6/6',
-    click: '23',
-  },
-  {
-    sort: '질문',
-    title: '반려견이 어제부터 재채기를 해요',
-    date: '2023/5/6',
-    click: '21',
-  },
-];
-
-const postInfomation = [
-  {
-    sort: '잡담',
-    title: '안녕하세요',
-    date: '2023/8/15',
-    click: '1',
-  },
-  {
-    sort: '질문',
-    title: '강아지가 밥을 안먹어요',
-    date: '2023/8/15',
-    click: '6',
-  },
-  {
-    sort: '인증',
-    title: '애기 데려온지 한달',
-    date: '2023/8/15',
-    click: '16',
-  },
-  {
-    sort: '잡담',
-    title: '사료 추천해요',
-    date: '2023/8/15',
-    click: '8',
-  },
-  {
-    sort: '질문',
-    title: '광교 근처 애견카페 있나요',
-    date: '2023/8/14',
-    click: '3',
-  },
-];
-
 const CommunityPage = () => {
   return (
     <div>
@@ -102,26 +48,7 @@ const CommunityPage = () => {
                 <th className="w-[30px] border-b border-gray-400">조회수</th>
               </tr>
             </thead>
-            <tbody>
-              {popularPostInfomation.map(({ sort, title, date, click }) => {
-                return (
-                  <tr key={title} className="hover:text-pm-main">
-                    <td className="border-b border-gray-400 text-center text-gray-500">
-                      {sort}
-                    </td>
-                    <td className="truncate border-b border-gray-400 font-semibold hover:underline">
-                      {title}
-                    </td>
-                    <td className="border-b border-gray-400 text-center text-gray-500">
-                      {date}
-                    </td>
-                    <td className="border-b border-gray-400 text-center text-gray-500">
-                      {click}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
 
@@ -139,26 +66,7 @@ const CommunityPage = () => {
                 <th className="w-[30px] border-b border-gray-400">조회수</th>
               </tr>
             </thead>
-            <tbody>
-              {postInfomation.map(({ sort, title, date, click }) => {
-                return (
-                  <tr key={title} className=" hover:text-pm-main">
-                    <td className="border-b border-gray-400 text-center text-gray-500">
-                      {sort}
-                    </td>
-                    <td className="truncate border-b border-gray-400 hover:font-bold hover:underline">
-                      {title}
-                    </td>
-                    <td className="border-b border-gray-400 text-center text-gray-500">
-                      {date}
-                    </td>
-                    <td className="border-b border-gray-400 text-center text-gray-500">
-                      {click}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
       </div>

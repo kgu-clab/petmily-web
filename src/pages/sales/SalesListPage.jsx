@@ -1,7 +1,7 @@
 import AnimalSection from '@components/animal/AnimalListSection';
 import AnimalCard from '@components/ui/AnimalCard';
 
-const AnimalListPage = () => {
+const SalesListPage = () => {
   return (
     <div className="flex flex-col gap-10">
       {/* 전문업체분양 */}
@@ -47,6 +47,6 @@ const AnimalListPage = () => {
   );
 };
 
-AnimalListPage.propTypes = {};
+SalesListPage.propTypes = {};
 
-export default AnimalListPage;
+export default SalesListPage;

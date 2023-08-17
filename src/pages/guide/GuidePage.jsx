@@ -1,9 +1,8 @@
-import GuideTagSection from '@components/home/GuideTagSection';
-import PopularGuideSection from '@components/home/PopularGuideSection';
+import GuideTagSection from '@components/guide/GuideTagSection';
+import PopularGuideSection from '@components/guide/PopularGuideSection';
 import ContentCard from '@components/ui/ContentCard';
 import Table from '@components/ui/Table';
 import Titlebar from '@components/ui/Titlebar';
-
 
 const GuidePage = () => {
   return (
@@ -81,7 +80,6 @@ const GuidePage = () => {
           headers={['번호', '제목', '작성자', '작성일']}
         ></Table>
       </div>
-
     </div>
   );
 };
