@@ -27,6 +27,10 @@ const MyPage = () => {
     설정: <MypageSetup />,
   }[view];
 
+  const isSelected = (name) => {
+    return view === name ? 'border-pm-main' : 'border-gray-300 bg-gray-50';
+  };
+
   if (isLoading) {
     return <LoadingPage />;
   }
@@ -57,32 +61,32 @@ const MyPage = () => {
 
           <div className="flex rounded-b-lg bg-white">
             <MypageCard
-              icon={<IdentificationIcon className="h-10 w-10" />}
-              className={view === '마이펫' ? 'border-pm-main' : 'border-white'}
+              icon={<IdentificationIcon className="h-8 w-8" />}
+              className={isSelected('마이펫')}
               label="마이펫"
               text="분양한 반려동물 정보를 볼 수 있어요."
               onClick={() => setView('마이펫')}
             />
 
             <MypageCard
-              icon={<BuildingStorefrontIcon className="h-10 w-10" />}
-              className={view === '스토어' ? 'border-pm-main' : 'border-white'}
+              icon={<BuildingStorefrontIcon className="h-8 w-8" />}
+              className={isSelected('스토어')}
               label="스토어"
               text="스토어에 등록, 구매 내용을 볼 수 있어요."
               onClick={() => setView('스토어')}
             />
 
             <MypageCard
-              icon={<Heart className="h-10 w-10" />}
-              className={view === '분양' ? 'border-pm-main' : 'border-white'}
+              icon={<Heart className="h-8 w-8" />}
+              className={isSelected('분양')}
               label="분양"
               text="팻밀리 분양에 관련된 정보를 볼 수 있어요."
               onClick={() => setView('분양')}
             />
 
             <MypageCard
-              icon={<Cog6ToothIcon className="h-10 w-10" />}
-              className={view === '설정' ? 'border-pm-main' : 'border-white'}
+              icon={<Cog6ToothIcon className="h-8 w-8" />}
+              className={isSelected('설정')}
               label="설정"
               text="프로필 수정 및 기타 설정을 할 수 있어요."
               onClick={() => setView('설정')}

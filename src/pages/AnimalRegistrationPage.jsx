@@ -208,7 +208,7 @@ const AnimalRegistrationPage = () => {
 
   if (isSuccess)
     return (
-      <>
+      <div>
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-2 flex gap-4">
             <div className="flex h-96 basis-8/12 items-center justify-center rounded-lg bg-white hover:bg-white/60">
@@ -497,14 +497,13 @@ const AnimalRegistrationPage = () => {
             />
           </div>
         </div>
-
         <div className="mt-4 flex justify-end gap-4">
           <Button color="red">취소</Button>
           <Button color="blue" onClick={onClickAdd}>
             등록
           </Button>
         </div>
-      </>
+      </div>
     );
 };
 
