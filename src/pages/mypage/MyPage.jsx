@@ -53,9 +53,9 @@ const MyPage = () => {
             />
 
             <div className="py-4">
-              <p className="text-3xl font-semibold">{data.id}님</p>
-              <p>{data.email}</p>
-              <p>{data.address}</p>
+              <p className="text-3xl font-semibold">{data?.id}님</p>
+              <p>{data?.email}</p>
+              <p>{data?.address}</p>
             </div>
           </div>
 
