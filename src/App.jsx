@@ -23,13 +23,12 @@ import AnimalSalePage from '@pages/AnimalSalePage';
 const Section = () => {
   return (
     <section>
-      <ScrollToTop />
       <Sidebar />
 
-      <div className="ml-[18rem] grow p-5">
+      <ScrollToTop>
         <Outlet />
         <Footer />
-      </div>
+      </ScrollToTop>
     </section>
   );
 };

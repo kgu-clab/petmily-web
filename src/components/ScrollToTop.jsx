@@ -1,12 +1,17 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function ScrollToTop() {
-  const { pathname } = useLocation();
+export default function ScrollToTop({ children }) {
+  const location = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
 
-  return null;
+  return <div className="ml-[18rem] grow p-5">{children}</div>;
 }
+
+ScrollToTop.propTypes = {
+  children: PropTypes.node,
+};
